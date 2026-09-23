@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Inter:Bold';
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Inter:Regular';
+  src: url('https://static.figma.com/font/Inter_1') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans:Bold';
+  src: url('https://static.figma.com/font/PlusJakartaSans_wght__2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans:ExtraBold';
+  src: url('https://static.figma.com/font/PlusJakartaSans_wght__2') format('woff2');
+  font-style: normal;
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans:Medium';
+  src: url('https://static.figma.com/font/PlusJakartaSans_wght__2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans:Regular';
+  src: url('https://static.figma.com/font/PlusJakartaSans_wght__2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans:SemiBold';
+  src: url('https://static.figma.com/font/PlusJakartaSans_wght__2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+div[data-node-id="1:4"] {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 0;
+}
+
+div[data-node-id="1:5"] {
+  position: relative;
+  width: min(100%, 402px);
+  max-width: 402px;
+  min-height: 100vh;
+  margin: 0 auto;
+  box-shadow: -8px 0 20px rgba(0, 0, 0, 0.06), 8px 0 20px rgba(0, 0, 0, 0.06);
+}
+
+div[data-node-id="1:19"] {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  grid-template-columns: none;
+  width: 100%;
+  max-width: 100%;
+  gap: 16px;
+  padding: 12px 0 98px;
+  margin: 0;
+}
+
+div[data-node-id="1:19"] > div {
+  width: 370px;
+  max-width: 370px;
+  margin: 0 auto;
+  flex: 0 0 auto;
+}
+
+div[data-node-id="1:246"] {
+  position: fixed;
+  z-index: 40;
+  right: max(15px, calc((100vw - 402px) / 2 + 15px));
+  bottom: 12px;
+  left: max(15px, calc((100vw - 402px) / 2 + 15px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 71px;
+  gap: 53px;
+  padding: 11px 25px;
+  border: 1px solid rgba(234, 156, 175, 0.3);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 -4px 25px rgba(213, 105, 137, 0.08);
+  backdrop-filter: blur(6px);
+  margin: 0 auto;
+}
+
+@media (max-width: 402px) {
+  div[data-node-id="1:5"],
+  div[data-node-id="1:246"] {
+    width: calc(100% - 32px);
+    max-width: 370px;
+  }
+
+  div[data-node-id="1:19"] > div {
+    width: calc(100% - 32px);
+    max-width: 370px;
+  }
+}
