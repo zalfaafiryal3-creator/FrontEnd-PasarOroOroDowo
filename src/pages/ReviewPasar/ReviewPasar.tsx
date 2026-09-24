@@ -1,15 +1,16 @@
-﻿import { useNavigate } from 'react-router-dom';
+﻿import { useEffect, useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ReviewPasar.css';
 
 const asset = (name: string) => `/assets/${name}`;
 
-const filters = [
-  'Semua (3)',
-  'Dengan Foto (1)',
-  'Bintang 5 (2)',
-  'Bintang 4 (1)',
-  'Bintang 1-3 (0)',
-];
+const filterDefinitions = [
+  { id: 'all', label: 'Semua' },
+  { id: 'photo', label: 'Dengan Foto' },
+  { id: '5', label: 'Bintang 5' },
+  { id: '4', label: 'Bintang 4' },
+  { id: '1-3', label: 'Bintang 1-3' },
+] as const;
 
 const shopSummary = [
   { label: 'Kebersihan & Kerapian', value: 4.9, tone: 'green' },
@@ -68,6 +69,47 @@ function StarRow({ rating }: { rating: number }) {
 
 export default function ReviewToko() {
   const navigate = useNavigate();
+  const [activeFilter, setActiveFilter] = useState<(typeof filterDefinitions)[number]['id']>('all');
+  const [visibleCount, setVisibleCount] = useState(10);
+
+  const filterCounts = useMemo(
+    () => ({
+      all: reviews.length,
+      photo: reviews.filter((review) => review.photos.length > 0).length,
+      '5': reviews.filter((review) => review.rating === 5).length,
+      '4': reviews.filter((review) => review.rating === 4).length,
+      '1-3': reviews.filter((review) => review.rating >= 1 && review.rating <= 3).length,
+    }),
+    []
+  );
+
+  const filters = filterDefinitions.map((filter) => ({
+    ...filter,
+    value: `${filter.label} (${filterCounts[filter.id]})`,
+  }));
+
+  const filteredReviews = useMemo(() => {
+    switch (activeFilter) {
+      case 'photo':
+        return reviews.filter((review) => review.photos.length > 0);
+      case '5':
+        return reviews.filter((review) => review.rating === 5);
+      case '4':
+        return reviews.filter((review) => review.rating === 4);
+      case '1-3':
+        return reviews.filter((review) => review.rating >= 1 && review.rating <= 3);
+      case 'all':
+      default:
+        return reviews;
+    }
+  }, [activeFilter]);
+
+  useEffect(() => {
+    setVisibleCount(Math.min(10, filteredReviews.length));
+  }, [activeFilter, filteredReviews.length]);
+
+  const visibleReviews = filteredReviews.slice(0, visibleCount);
+  const shouldShowLoadMore = filteredReviews.length > 10 && visibleCount < filteredReviews.length;
 
   return (
     <div className="app-shell">
@@ -163,79 +205,92 @@ export default function ReviewToko() {
           </div>
 
           <div className="filter-scroll" aria-label="Filter kategori ulasan">
-            {filters.map((filter, index) => (
+            {filters.map((filter) => (
               <button
                 type="button"
-                key={filter}
-                className={`filter-chip ${index === 0 ? 'active' : ''}`}
+                key={filter.id}
+                className={`filter-chip ${activeFilter === filter.id ? 'active' : ''}`}
+                onClick={() => setActiveFilter(filter.id)}
               >
-                {filter}
+                {filter.value}
               </button>
             ))}
           </div>
 
           <div className="review-list">
-            {reviews.map((review) => (
-              <article className="review-card" key={`${review.name}-${review.date}`}>
-                <div className="review-card-head">
-                  <div className="user-meta">
-                    <strong>{review.name}</strong>
-                    <span className="user-status">{review.status}</span>
+            {visibleReviews.length === 0 ? (
+              <p style={{ margin: '12px 0', color: '#594045', fontSize: '14px' }}>
+                Tidak ada ulasan untuk filter ini.
+              </p>
+            ) : (
+              visibleReviews.map((review) => (
+                <article className="review-card" key={`${review.name}-${review.date}`}>
+                  <div className="review-card-head">
+                    <div className="user-meta">
+                      <strong>{review.name}</strong>
+                      <span className="user-status">{review.status}</span>
+                    </div>
+                    <button type="button" className="menu-button" aria-label="Opsi lain">
+                      ⋮
+                    </button>
                   </div>
-                  <button type="button" className="menu-button" aria-label="Opsi lain">
-                    ⋮
+
+                  <div className="rating-row">
+                    <div className="rating-inline">
+                      <StarRow rating={review.rating} />
+                      <span className="rating-value">{review.rating.toFixed(1)}</span>
+                    </div>
+                    <span className="review-date">{review.date}</span>
+                  </div>
+
+                  {review.tags.length > 0 && (
+                    <div className="review-tags">
+                      {review.tags.map((tag) => (
+                        <span key={tag} className="review-tag">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <p className="review-text">{review.text}</p>
+
+                  {review.photos.length > 0 && (
+                    <div className="photo-grid">
+                      {review.photos.map((photo, index) => (
+                        <div key={`${photo}-${index}`} className="photo-frame">
+                          <div className="photo-image" aria-label="Foto review" />
+                          {index === review.photos.length - 1 && review.photos.length > 1 ? (
+                            <span className="photo-overlay">+ Foto Lapak</span>
+                          ) : null}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <button type="button" className="helpful-button">
+                    <span aria-hidden="true">👍</span>
+                    <span>Membantu ({review.helpful})</span>
                   </button>
-                </div>
-
-                <div className="rating-row">
-                  <div className="rating-inline">
-                    <StarRow rating={review.rating} />
-                    <span className="rating-value">{review.rating.toFixed(1)}</span>
-                  </div>
-                  <span className="review-date">{review.date}</span>
-                </div>
-
-                {review.tags.length > 0 && (
-                  <div className="review-tags">
-                    {review.tags.map((tag) => (
-                      <span key={tag} className="review-tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                <p className="review-text">{review.text}</p>
-
-                {review.photos.length > 0 && (
-                  <div className="photo-grid">
-                    {review.photos.map((photo, index) => (
-                      <div key={`${photo}-${index}`} className="photo-frame">
-                        <div className="photo-image" aria-label="Foto review" />
-                        {index === review.photos.length - 1 && review.photos.length > 1 ? (
-                          <span className="photo-overlay">+ Foto Lapak</span>
-                        ) : null}
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <button type="button" className="helpful-button">
-                  <span aria-hidden="true">👍</span>
-                  <span>Membantu ({review.helpful})</span>
-                </button>
-              </article>
-            ))}
+                </article>
+              ))
+            )}
           </div>
 
-          <div className="load-more-wrapper">
-            <button type="button" className="load-more-button">
-              <span>Muat Ulasan Lainnya</span>
-              <svg className="chevron-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                <path d="M5.5 7.75L10 12.25L14.5 7.75" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
+          {shouldShowLoadMore && (
+            <div className="load-more-wrapper">
+              <button
+                type="button"
+                className="load-more-button"
+                onClick={() => setVisibleCount((current) => Math.min(current + 10, filteredReviews.length))}
+              >
+                <span>Muat Ulasan Lainnya</span>
+                <svg className="chevron-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5.5 7.75L10 12.25L14.5 7.75" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </div>
+          )}
         </section>
         </div>
 
