@@ -304,7 +304,7 @@ export default function Home() {
             <span><img src={asset("75326.svg")} alt="" /></span>
             <b>Promo</b>
           </button>
-          <button type="button" className="review-tab">
+          <button type="button" className="review-tab" onClick={() => navigate('/review-pasar')}>
             <span><img src={asset("3de6e.svg")} alt="" /></span>
             <b>Review Pasar</b>
           </button>
