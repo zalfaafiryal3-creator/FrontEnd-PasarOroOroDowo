@@ -89,7 +89,7 @@ export default function Home() {
           <section className="visit-card"><div className="visit-copy"><div className="visit-title"><span><img src={asset("a7199.svg")} alt="" /></span><h2>Rencanakan Kunjunganmu</h2></div><p>Cek info terbaru, event, dan promo menarik di<span>Pasar Oro-Oro Dowo.</span></p><button type="button" onClick={() => navigate('/info-kunjungan')}>Lihat Info Kunjungan <img src={asset("0d8ef.svg")} alt="" /></button></div><img src={asset("f6baa.svg")} alt="Ilustrasi kios pasar" className="visit-art" /></section>
         </div>
 
-        <nav className="bottom-nav" aria-label="Navigasi utama"><button type="button" className="active"><span><img src={asset("dfd0c.svg")} alt="" /></span><b>Home</b></button><button type="button"><span><img src={asset("2781e.svg")} alt="" /></span><b>Toko</b></button><button type="button"><span><img src={asset("75326.svg")} alt="" /></span><b>Promo</b></button><button type="button" className="review-tab" onClick={() => navigate('/review-pasar')}><span><img src={asset("3de6e.svg")} alt="" /></span><b>Review Pasar</b></button></nav>
+        <nav className="bottom-nav" aria-label="Navigasi utama"><button type="button" className="active"><span><img src={asset("dfd0c.svg")} alt="" /></span><b>Home</b></button><button type="button"><span><img src={asset("2781e.svg")} alt="" /></span><b>Toko</b></button><button type="button" onClick={() => navigate('/promo')}><span><img src={asset("75326.svg")} alt="" /></span><b>Promo</b></button><button type="button" className="review-tab" onClick={() => navigate('/review-pasar')}><span><img src={asset("3de6e.svg")} alt="" /></span><b>Review Pasar</b></button></nav>
       </main>
     </div>
   );

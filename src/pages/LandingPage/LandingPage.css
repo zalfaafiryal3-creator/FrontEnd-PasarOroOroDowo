@@ -16,10 +16,16 @@
   height: auto;
   view-transition-name: market-logo;
   animation: splash-logo-in 1.2s ease-in-out both;
+  filter: drop-shadow(0 8px 14px rgba(194, 220, 128, 0.7));
 }
 
 .brand-group-logo {
   view-transition-name: market-logo;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
 }
 
 ::view-transition-old(market-logo),
