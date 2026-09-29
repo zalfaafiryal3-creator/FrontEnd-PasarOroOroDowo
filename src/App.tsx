@@ -5,6 +5,7 @@ import FasilitasPasar from './pages/FasilitasPasar/FasilitasPasar';
 import LandingPage from './pages/LandingPage/LandingPage';
 import InfoKunjungan from './pages/InfoKunjungan/InfoKunjungan';
 import Promo from './pages/Promo/Promo';
+import Rekomendasi from './pages/Rekomendasi/Rekomendasi';
 import ReviewPasar from './pages/ReviewPasar/ReviewPasar';
 import TulisUlasanPasar from './pages/TulisUlasanPasar/TulisUlasanPasar';
 
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/landing-page" element={<LandingPage />} />
         <Route path="/info-kunjungan" element={<InfoKunjungan />} />
         <Route path="/promo" element={<Promo />} />
+        <Route path="/rekomendasi" element={<Rekomendasi />} />
         <Route path="/review-pasar" element={<ReviewPasar />} />
         <Route path="/tulis-ulasan-pasar" element={<TulisUlasanPasar />} />
       </Routes>
