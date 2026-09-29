@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import Home from './pages/Home/Home';
+import FasilitasPasar from './pages/FasilitasPasar/FasilitasPasar';
 import LandingPage from './pages/LandingPage/LandingPage';
 import InfoKunjungan from './pages/InfoKunjungan/InfoKunjungan';
 import Promo from './pages/Promo/Promo';
@@ -33,6 +34,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<SplashScreen />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/toko" element={<Home />} />
+        <Route path="/fasilitas-pasar" element={<FasilitasPasar />} />
         <Route path="/landing-page" element={<LandingPage />} />
         <Route path="/info-kunjungan" element={<InfoKunjungan />} />
         <Route path="/promo" element={<Promo />} />

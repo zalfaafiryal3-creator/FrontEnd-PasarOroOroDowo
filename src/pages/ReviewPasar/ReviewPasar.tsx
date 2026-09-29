@@ -270,7 +270,7 @@ export default function ReviewToko() {
         </div>
 
         <nav className="bottom-nav review-page" aria-label="Navigasi utama">
-          <button type="button" onClick={() => navigate('/')}>
+          <button type="button" onClick={() => navigate('/home')}>
             <span><img src={asset('dfd0c.svg')} alt="" /></span>
             <b>Home</b>
           </button>

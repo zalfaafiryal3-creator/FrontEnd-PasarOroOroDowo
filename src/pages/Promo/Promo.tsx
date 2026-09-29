@@ -156,7 +156,7 @@ export default function Promo() {
 
 	const navigationItems = [
 		{ label: 'Home', path: '/home', icon: House },
-		{ label: 'Toko', path: '/home', icon: Store },
+		{ label: 'Toko', path: '/toko', icon: Store },
 		{ label: 'Promo', path: '/promo', icon: TicketPercent },
 		{ label: 'Review Pasar', path: '/review-pasar', icon: MessageSquareText },
 	];

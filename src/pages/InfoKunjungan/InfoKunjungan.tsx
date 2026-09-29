@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './InfoKunjungan.css';
 
 const assetPathPrefix = "/assets"
@@ -1681,7 +1682,8 @@ export default function InfoKunjungan() {
         data-node-id="1:246"
         data-name="Background+Border+Shadow+OverlayBlur"
       >
-        <div
+        <Link
+          to="/home"
           className="content-stretch flex flex-col items-center relative shrink-0"
           data-node-id="1:247"
           data-name="Link - Tab 1: Home (Active)"
@@ -1715,8 +1717,9 @@ export default function InfoKunjungan() {
               <p className="leading-[14.25px]">Home</p>
             </div>
           </div>
-        </div>
-        <div
+        </Link>
+        <Link
+          to="/toko"
           className="content-stretch flex flex-col items-center relative shrink-0"
           data-node-id="1:254"
           data-name="Link - Tab 2: Toko"
@@ -1750,8 +1753,9 @@ export default function InfoKunjungan() {
               <p className="leading-[14.25px]">Toko</p>
             </div>
           </div>
-        </div>
-        <div
+        </Link>
+        <Link
+          to="/promo"
           className="content-stretch flex flex-col isolate items-center relative shrink-0"
           data-node-id="1:262"
           data-name="Link - Tab 3: Keranjang"
@@ -1775,8 +1779,9 @@ export default function InfoKunjungan() {
               <p className="leading-[14.25px]">Promo</p>
             </div>
           </div>
-        </div>
-        <div
+        </Link>
+        <Link
+          to="/review-pasar"
           className="content-stretch flex flex-col gap-[2px] items-center justify-center relative shrink-0"
           data-node-id="1:267"
           data-name="Button - Nav Item 4: Profil"
@@ -1810,7 +1815,7 @@ export default function InfoKunjungan() {
               <p className="leading-[15px]">Review Pasar</p>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   )

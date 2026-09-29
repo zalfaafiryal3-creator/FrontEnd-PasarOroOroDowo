@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import './Home.css';
 
 const asset = (name: string) => `/assets/${name}`;
@@ -59,8 +60,21 @@ function StoreCard({ store }: { store: (typeof stores)[number] }) {
 
 export default function Home() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [favorite, setFavorite] = useState(false);
   const [query, setQuery] = useState("");
+  const isStorePage = location.pathname === '/toko';
+
+  useEffect(() => {
+    if (isStorePage) {
+      document.getElementById('store-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [isStorePage]);
+
+  const handleFeatureClick = (label: string) => {
+    if (label === "Fasilitas") navigate('/fasilitas-pasar');
+    if (label === "Info\nKunjungan") navigate('/info-kunjungan');
+  };
 
   return (
     <div className="app-shell">
@@ -83,13 +97,13 @@ export default function Home() {
             <div className="market-stats"><div className="stat-item"><div className="stat-icon"><img src={asset("9107e.svg")} alt="" /></div><div><small>Jam Buka</small><strong>06.00 -<br />17.00</strong><em>Setiap Hari</em></div></div><div className="stat-item"><div className="stat-icon"><img src={asset("c5164.svg")} alt="" /></div><div><small>Jumlah<br />Pedagang</small><strong>± 251</strong><em>Pedagang</em></div></div><div className="stat-item location-stat"><div className="stat-icon"><img src={asset("51c04.svg")} alt="" /></div><div><small>Lokasi</small><strong>Klojen, Kota Malang,<br />Jawa Timur</strong></div></div></div>
           </section>
 
-          <nav className="feature-grid" aria-label="Informasi pasar">{features.map((item) => <button type="button" key={item.label} onClick={() => item.label === "Info\nKunjungan" && navigate('/info-kunjungan')}><span className={`feature-icon ${item.tone}`}><img src={asset(item.icon)} alt="" /></span><b>{item.label.split("\n").map((line) => <span key={line}>{line}</span>)}</b></button>)}</nav>
+          <nav className="feature-grid" aria-label="Informasi pasar">{features.map((item) => <button type="button" key={item.label} onClick={() => handleFeatureClick(item.label)}><span className={`feature-icon ${item.tone}`}><img src={asset(item.icon)} alt="" /></span><b>{item.label.split("\n").map((line) => <span key={line}>{line}</span>)}</b></button>)}</nav>
           <section className="category-section"><SectionHeader title="Kategori Belanja" /><div className="category-list">{categories.map((item) => <button type="button" className={`category-card ${item.tone}`} key={item.label}><span><img src={asset(item.icon)} alt="" /></span><b>{item.label}</b></button>)}</div></section>
-          <section className="store-section"><SectionHeader title="Daftar Toko" /><div className="store-grid">{stores.map((store) => <StoreCard store={store} key={store.name} />)}</div></section>
+          <section className="store-section" id="store-list"><SectionHeader title="Daftar Toko" /><div className="store-grid">{stores.map((store) => <StoreCard store={store} key={store.name} />)}</div></section>
           <section className="visit-card"><div className="visit-copy"><div className="visit-title"><span><img src={asset("a7199.svg")} alt="" /></span><h2>Rencanakan Kunjunganmu</h2></div><p>Cek info terbaru, event, dan promo menarik di<span>Pasar Oro-Oro Dowo.</span></p><button type="button" onClick={() => navigate('/info-kunjungan')}>Lihat Info Kunjungan <img src={asset("0d8ef.svg")} alt="" /></button></div><img src={asset("f6baa.svg")} alt="Ilustrasi kios pasar" className="visit-art" /></section>
         </div>
 
-        <nav className="bottom-nav" aria-label="Navigasi utama"><button type="button" className="active"><span><img src={asset("dfd0c.svg")} alt="" /></span><b>Home</b></button><button type="button"><span><img src={asset("2781e.svg")} alt="" /></span><b>Toko</b></button><button type="button" onClick={() => navigate('/promo')}><span><img src={asset("75326.svg")} alt="" /></span><b>Promo</b></button><button type="button" className="review-tab" onClick={() => navigate('/review-pasar')}><span><img src={asset("3de6e.svg")} alt="" /></span><b>Review Pasar</b></button></nav>
+        <nav className="bottom-nav" aria-label="Navigasi utama"><button type="button" className={!isStorePage ? "active" : ""} onClick={() => navigate('/home')}><span><img src={asset("dfd0c.svg")} alt="" /></span><b>Home</b></button><button type="button" className={isStorePage ? "active" : ""} onClick={() => navigate('/toko')}><span><img src={asset("2781e.svg")} alt="" /></span><b>Toko</b></button><button type="button" onClick={() => navigate('/promo')}><span><img src={asset("75326.svg")} alt="" /></span><b>Promo</b></button><button type="button" className="review-tab" onClick={() => navigate('/review-pasar')}><span><img src={asset("3de6e.svg")} alt="" /></span><b>Review Pasar</b></button></nav>
       </main>
     </div>
   );

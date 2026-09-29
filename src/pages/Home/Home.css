@@ -81,7 +81,7 @@ button { cursor: pointer; }
 .category-card.plain > span { background: #f3eef1; }
 .category-card img { width: 20px; height: 20px; }
 .category-card b { margin-top: 4px; color: #374151; font: 700 10px/16px "Inter:Bold",sans-serif; }
-.store-section { padding: 0 3px; }
+.store-section { padding: 0 3px; scroll-margin-top: 112px; }
 .store-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px 8px; }
 .store-card { display: flex; min-width: 0; flex-direction: column; padding: 8px; border: 1px solid rgba(234,156,175,.3); border-radius: 16px; background: #fff; }
 .store-photo { position: relative; height: 116px; overflow: hidden; border-radius: 12px; background: #f3eef1; }
