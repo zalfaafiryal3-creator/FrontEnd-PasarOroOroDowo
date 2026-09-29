@@ -1,5 +1,12 @@
-﻿import { useEffect, useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  getCategoryAverages,
+  getOverallAverage,
+  getReviews,
+  reviewCategories,
+  subscribeToReviews,
+} from '../../services/reviewStore';
 import './ReviewPasar.css';
 
 const asset = (name: string) => `/assets/${name}`;
@@ -12,48 +19,7 @@ const filterDefinitions = [
   { id: '1-3', label: 'Bintang 1-3' },
 ] as const;
 
-const shopSummary = [
-  { label: 'Kebersihan & Kerapian', value: 4.9, tone: 'green' },
-  { label: 'Kelengkapan Komoditas', value: 4.8, tone: 'pink' },
-  { label: 'Keramahan Pedagang', value: 4.9, tone: 'rose' },
-  { label: 'Keamanan & Parkir', value: 4.6, tone: 'brown' },
-];
-
-const reviews = [
-  {
-    name: 'ZALFAA',
-    status: 'Pengunjung Setia',
-    rating: 5,
-    date: 'Kemarin',
-    tags: ['Kebersihan: Luar Biasa', 'Parkir: Tertata'],
-    text:
-      'Pasar tradisional paling bersih dan estetik di Malang! Lorongnya luas, tidak becek sama sekali, dan belanja sayur segar sampai jajanan di sini nyaman banget. Pedagangnya juga ramah-ramah.',
-    photos: ['1', '2'],
-    helpful: 34,
-  },
-  {
-    name: 'Rani',
-    status: 'Pengunjung Setia',
-    rating: 5,
-    date: '3 hari lalu',
-    tags: [],
-    text:
-      'Sekarang makin modern, sudah banyak kios yang terima pembayaran QRIS. Kuliner legendaris di bagian belakang juga lengkap dan enak. Wajib cobain kue lumpur dan mie ayamnya!',
-    photos: [],
-    helpful: 19,
-  },
-  {
-    name: 'Siti Rahmawati',
-    status: 'Pengunjung Setia',
-    rating: 4,
-    date: '1 minggu lalu',
-    tags: [],
-    text:
-      'Tempatnya asri dan bersih. Parkir motor dan mobil tertata rapi. Kalau pagi hari sekitar jam 7-8 cukup ramai tapi arus belanjanya tetap teratur karena lorongnya satu arah.',
-    photos: [],
-    helpful: 11,
-  },
-];
+const categoryTones = ['green', 'pink', 'rose', 'brown'] as const;
 
 function StarRow({ rating }: { rating: number }) {
   return (
@@ -69,8 +35,17 @@ function StarRow({ rating }: { rating: number }) {
 
 export default function ReviewToko() {
   const navigate = useNavigate();
+  const reviews = useSyncExternalStore(subscribeToReviews, getReviews, getReviews);
   const [activeFilter, setActiveFilter] = useState<(typeof filterDefinitions)[number]['id']>('all');
   const [visibleCount, setVisibleCount] = useState(10);
+
+  const categoryAverages = useMemo(() => getCategoryAverages(reviews), [reviews]);
+  const overallAverage = useMemo(() => getOverallAverage(reviews), [reviews]);
+  const shopSummary = reviewCategories.map((label, index) => ({
+    label,
+    value: categoryAverages[label],
+    tone: categoryTones[index],
+  }));
 
   const filterCounts = useMemo(
     () => ({
@@ -80,7 +55,7 @@ export default function ReviewToko() {
       '4': reviews.filter((review) => review.rating === 4).length,
       '1-3': reviews.filter((review) => review.rating >= 1 && review.rating <= 3).length,
     }),
-    []
+    [reviews]
   );
 
   const filters = filterDefinitions.map((filter) => ({
@@ -102,7 +77,7 @@ export default function ReviewToko() {
       default:
         return reviews;
     }
-  }, [activeFilter]);
+  }, [activeFilter, reviews]);
 
   useEffect(() => {
     setVisibleCount(Math.min(10, filteredReviews.length));
@@ -148,14 +123,14 @@ export default function ReviewToko() {
 
           <div className="rating-highlight">
             <div className="rating-score-box">
-              <div className="score-value">4.8</div>
-              <StarRow rating={5} />
+              <div className="score-value">{overallAverage.toFixed(1)}</div>
+              <StarRow rating={overallAverage} />
             </div>
 
             <div className="rating-description">
               <strong>Sangat Direkomendasikan</strong>
               <span>Dari 1.240+ ulasan terverifikasi</span>
-              <em>98% pengunjung puas</em>
+              <em>{Math.round((overallAverage / 5) * 100)}% pengunjung puas</em>
             </div>
           </div>
 
@@ -165,7 +140,7 @@ export default function ReviewToko() {
                 <div className="summary-bar-top">
                   <span className="summary-label">{item.label}</span>
                   <span className="summary-value">
-                    {item.value} <span aria-hidden="true">★</span>
+                    {item.value.toFixed(1)} <span aria-hidden="true">★</span>
                   </span>
                 </div>
                 <div className="summary-track">
@@ -178,7 +153,7 @@ export default function ReviewToko() {
             ))}
           </div>
 
-          <button type="button" className="write-review-button">
+          <button type="button" className="write-review-button" onClick={() => navigate('/tulis-ulasan-pasar')}>
             <span aria-hidden="true">✎</span>
             <span>Tulis Ulasan Pasar</span>
           </button>

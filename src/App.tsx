@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import InfoKunjungan from './pages/InfoKunjungan/InfoKunjungan';
 import Promo from './pages/Promo/Promo';
 import ReviewPasar from './pages/ReviewPasar/ReviewPasar';
+import TulisUlasanPasar from './pages/TulisUlasanPasar/TulisUlasanPasar';
 
 const splashLogo = '/assets/Logo%20Oro.png';
 
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/info-kunjungan" element={<InfoKunjungan />} />
         <Route path="/promo" element={<Promo />} />
         <Route path="/review-pasar" element={<ReviewPasar />} />
+        <Route path="/tulis-ulasan-pasar" element={<TulisUlasanPasar />} />
       </Routes>
     </BrowserRouter>
   );
