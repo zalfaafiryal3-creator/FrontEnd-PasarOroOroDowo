@@ -4,14 +4,10 @@ import {
 	CalendarDays,
 	CheckCircle2,
 	Clock3,
-	House,
 	Info,
 	Megaphone,
-	MessageSquareText,
 	Search,
 	Sparkles,
-	Store,
-	TicketPercent,
 } from 'lucide-react';
 import './Promo.css';
 
@@ -155,10 +151,10 @@ export default function Promo() {
 	});
 
 	const navigationItems = [
-		{ label: 'Home', path: '/home', icon: House },
-		{ label: 'Toko', path: '/toko', icon: Store },
-		{ label: 'Promo', path: '/promo', icon: TicketPercent },
-		{ label: 'Review Pasar', path: '/review-pasar', icon: MessageSquareText },
+		{ label: 'Home', path: '/home', icon: '/assets/dfd0c.svg' },
+		{ label: 'Toko', path: '/toko', icon: '/assets/2781e.svg' },
+		{ label: 'Promo', path: '/promo', icon: '/assets/75326.svg' },
+		{ label: 'Review Pasar', path: '/review-pasar', icon: '/assets/3de6e.svg' },
 	];
 
 	return (
@@ -267,20 +263,17 @@ export default function Promo() {
 
 				<nav className="promo-bottom-nav" aria-label="Navigasi utama">
 					{navigationItems.map((item) => {
-						const NavIcon = item.icon;
 						const isActive = item.label === 'Promo';
 						return (
 							<button
 								type="button"
-								className={isActive ? 'active' : ''}
+								className={`${isActive ? 'active ' : ''}${item.label === 'Review Pasar' ? 'review-tab' : ''}`}
 								key={item.label}
 								aria-current={isActive ? 'page' : undefined}
 								onClick={() => navigate(item.path)}
 							>
-								<span className="promo-nav-icon">
-									<NavIcon aria-hidden="true" />
-								</span>
-								<span className="promo-nav-label">{item.label}</span>
+								<span><img src={item.icon} alt="" /></span>
+								<b>{item.label}</b>
 							</button>
 						);
 					})}

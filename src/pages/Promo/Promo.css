@@ -569,67 +569,68 @@
 
 .promo-bottom-nav {
 	position: fixed;
-	z-index: 20;
-	bottom: max(8px, env(safe-area-inset-bottom));
-	left: 50%;
+	z-index: 40;
+	right: max(15px, calc((100vw - 402px) / 2 + 15px));
+	bottom: 12px;
+	left: max(15px, calc((100vw - 402px) / 2 + 15px));
 	display: flex;
-	width: min(calc(100% - 30px), 382px);
-	min-height: 67px;
+	height: 71px;
 	align-items: center;
-	justify-content: space-around;
-	padding: 7px 12px;
-	border: 1px solid rgba(234, 156, 175, 0.25);
-	border-radius: 24px;
-	background: rgba(255, 255, 255, 0.96);
-	box-shadow: 0 -4px 22px rgba(213, 105, 137, 0.1);
-	backdrop-filter: blur(8px);
-	transform: translateX(-50%);
+	justify-content: space-between;
+	padding: 11px 25px;
+	border: 1px solid rgba(234, 156, 175, 0.3);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.95);
+	box-shadow: 0 -4px 25px rgba(213, 105, 137, 0.08);
+	backdrop-filter: blur(6px);
 }
 
 .promo-bottom-nav button {
 	display: flex;
-	min-width: 48px;
-	flex: 1;
+	min-width: 38px;
 	flex-direction: column;
 	align-items: center;
-	gap: 2px;
 	padding: 0;
 	border: 0;
 	background: transparent;
-	color: #9a9399;
+	color: #9ca3af;
 }
 
-.promo-nav-icon {
+.promo-bottom-nav button > span {
 	display: grid;
-	width: 29px;
-	height: 29px;
+	width: 32px;
+	height: 32px;
 	place-items: center;
-	border-radius: 50%;
 }
 
-.promo-nav-icon svg {
-	width: 17px;
-	height: 17px;
-	stroke-width: 1.8;
+.promo-bottom-nav button > span img {
+	width: 20px;
+	max-height: 23px;
 }
 
-.promo-nav-label {
-	font-size: 8px;
-	line-height: 12px;
+.promo-bottom-nav button b {
+	margin-top: 2px;
+	font: 400 9.5px/14px "Inter:Regular", sans-serif;
 	white-space: nowrap;
 }
 
 .promo-bottom-nav button.active {
-	color: #d56989;
+	color: #9ca3af;
 }
 
-.promo-bottom-nav button.active .promo-nav-icon {
+.promo-bottom-nav button.active > span {
+	border-radius: 50%;
 	background: rgba(234, 156, 175, 0.25);
 }
 
-.promo-bottom-nav button.active .promo-nav-label {
-	font-family: "Inter:Bold", Inter, sans-serif;
+.promo-bottom-nav button.active b {
+	color: #d56989;
+	font-family: "Inter:Bold", sans-serif;
 	font-weight: 700;
+}
+
+.promo-bottom-nav .review-tab b {
+	font-size: 9px;
 }
 
 .promo-page button:focus-visible {
@@ -657,8 +658,9 @@
 	}
 
 	.promo-bottom-nav {
-		width: calc(100% - 22px);
-		padding-inline: 7px;
+		right: 12px;
+		left: 12px;
+		padding-inline: 18px;
 	}
 }
 
