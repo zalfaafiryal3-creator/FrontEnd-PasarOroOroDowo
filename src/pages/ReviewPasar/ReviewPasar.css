@@ -64,6 +64,17 @@ button {
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
 }
 
+.mobile-page:has(.market-summary-card) {
+  border-inline-color: rgba(194, 220, 128, 0.35);
+  background: #f6f7f0;
+  font-family: "Inter:Bold", Inter, sans-serif;
+  font-weight: 600;
+}
+
+.mobile-page:has(.market-summary-card) strong {
+  font-weight: 700;
+}
+
 .top-header {
   position: sticky;
   z-index: 30;
@@ -74,6 +85,10 @@ button {
   padding: 16px 20px 8px;
   background: rgba(243, 238, 241, 0.95);
   backdrop-filter: blur(6px);
+}
+
+.mobile-page:has(.market-summary-card) .top-header {
+  background: #f6f7f0;
 }
 
 .brand-row {
@@ -97,11 +112,40 @@ button {
   height: 20px;
 }
 
+.mobile-page:has(.market-summary-card) .brand-logo {
+  background: linear-gradient(45deg, #c2dc80, #fbbf24);
+  box-shadow: 0 4px 2px #c2dc80, 0 4px 6px rgba(75, 101, 21, 0.25);
+}
+
 .brand-row h1 {
   margin: 0;
   color: #d56989;
   font: 700 20px/32px "Inter:Bold", sans-serif;
   letter-spacing: -0.6px;
+}
+
+.mobile-page:has(.market-summary-card) .brand-row h1 {
+  color: #594045;
+}
+
+.review-page-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 10px;
+}
+
+.review-page-heading h2 {
+  margin: 0;
+  color: #111c2d;
+  font: 700 24px/30px "Inter:Bold", sans-serif;
+}
+
+.review-page-heading p {
+  margin: 0;
+  color: #594045;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .search-box {
@@ -120,6 +164,10 @@ button {
   margin-left: 14px;
 }
 
+.mobile-page:has(.market-summary-card) .search-box {
+  border-color: rgba(75, 101, 21, 0.35);
+}
+
 .search-box input {
   width: 100%;
   height: 100%;
@@ -134,6 +182,11 @@ button {
 .search-box input::placeholder {
   color: #9ca3af;
   opacity: 1;
+}
+
+.mobile-page:has(.market-summary-card) .search-box input,
+.mobile-page:has(.market-summary-card) .search-box input::placeholder {
+  color: #594045;
 }
 
 .page-content {
@@ -153,7 +206,7 @@ button {
 }
 
 .review-section {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .market-summary-card {
@@ -161,7 +214,7 @@ button {
   background: #fff;
   border-radius: 24px;
   padding: 16px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 10px rgba(89, 64, 69, 0.25);
 }
 
 .market-summary-head {
@@ -176,17 +229,36 @@ button {
   min-width: 0;
 }
 
-.market-badge {
+.market-summary-card .market-badge {
   display: inline-flex;
   align-items: center;
+  gap: 5px;
   padding: 5px 11px;
   border-radius: 999px;
-  background: rgba(234, 156, 175, 0.25);
-  border: 1px solid #ea9caf;
-  color: #8f2d48;
+  background: #fbbf24;
+  border: 1px solid #f59e0b;
+  color: #594045;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.4px;
+}
+
+.market-summary-card .market-badge .market-badge-icon {
+  position: relative;
+  display: grid;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  place-items: center;
+  color: #594045;
+}
+
+.market-summary-card .market-badge .market-badge-icon svg {
+  position: absolute;
+}
+
+.market-summary-card .market-badge .market-badge-star {
+  fill: #594045;
 }
 
 .market-summary-copy h1 {
@@ -196,7 +268,7 @@ button {
   font-weight: 700;
   line-height: 28px;
   letter-spacing: -0.5px;
-  color: #111c2d;
+  color: #594045;
 }
 
 .market-location {
@@ -207,15 +279,20 @@ button {
   font-size: 12px;
 }
 
+.market-location svg {
+  flex: 0 0 auto;
+  color: #f59e0b;
+}
+
 .market-thumb {
   flex-shrink: 0;
   width: 56px;
   height: 56px;
   border-radius: 16px;
   background:
-    linear-gradient(135deg, rgba(213, 105, 137, 0.3), rgba(194, 220, 128, 0.35)),
+    linear-gradient(135deg, rgba(194, 220, 128, 0.3), rgba(251, 191, 36, 0.2)),
     url('/assets/204f2.png') center/cover no-repeat;
-  box-shadow: inset 0 0 0 1px rgba(17, 28, 45, 0.04);
+  box-shadow: 0 4px 10px rgba(89, 64, 69, 0.16), inset 0 0 0 1px rgba(89, 64, 69, 0.04);
 }
 
 .rating-highlight {
@@ -226,12 +303,13 @@ button {
   border-radius: 16px;
   padding: 12px;
   margin-top: 16px;
+  box-shadow: 0 4px 10px rgba(75, 101, 21, 0.14);
 }
 
 .rating-score-box {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 12px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 6px rgba(75, 101, 21, 0.12);
   min-width: 68px;
   padding: 8px 12px;
   display: flex;
@@ -244,7 +322,7 @@ button {
   font-size: 36px;
   line-height: 36px;
   font-weight: 800;
-  color: #d56989;
+  color: #4b6515;
   letter-spacing: -0.72px;
 }
 
@@ -256,11 +334,11 @@ button {
 
 .star {
   font-size: 11px;
-  color: #d7dbe2;
+  color: rgba(75, 101, 21, 0.25);
 }
 
 .star.filled {
-  color: #f59e0b;
+  color: #fbbf24;
 }
 
 .rating-description {
@@ -273,7 +351,7 @@ button {
 .rating-description strong {
   font-size: 14px;
   line-height: 20px;
-  color: #111c2d;
+  color: #4b6515;
 }
 
 .rating-description span {
@@ -287,7 +365,7 @@ button {
   border-radius: 999px;
   padding: 2px 8px;
   font-size: 10px;
-  color: #111c2d;
+  color: #4b6515;
   font-style: normal;
   font-weight: 700;
 }
@@ -313,10 +391,37 @@ button {
 }
 
 .summary-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 10px;
   line-height: 14px;
   color: #111c2d;
   font-weight: 600;
+}
+
+.summary-bar-item:nth-child(1) .summary-label svg {
+  width: 14px;
+  height: 14px;
+  color: #a9cf52;
+}
+
+.summary-bar-item:nth-child(2) .summary-label svg {
+  width: 14px;
+  height: 14px;
+  color: #f59e0b;
+}
+
+.summary-bar-item:nth-child(3) .summary-label svg {
+  width: 14px;
+  height: 14px;
+  color: #fbbf24;
+}
+
+.summary-bar-item:nth-child(4) .summary-label svg {
+  width: 14px;
+  height: 14px;
+  color: #795e61;
 }
 
 .summary-value {
@@ -327,7 +432,7 @@ button {
 }
 
 .summary-value span {
-  color: #f59e0b;
+  color: #fbbf24;
 }
 
 .summary-track {
@@ -335,7 +440,7 @@ button {
   width: 100%;
   overflow: hidden;
   border-radius: 999px;
-  background: #dee8ff;
+  background: #dce7ff;
 }
 
 .summary-fill {
@@ -348,22 +453,22 @@ button {
 }
 
 .summary-fill.pink {
-  background: #d56989;
+  background: #f59e0b;
 }
 
 .summary-fill.rose {
-  background: #ea9caf;
+  background: #fbbf24;
 }
 
 .summary-fill.brown {
-  background: #6d5a5b;
+  background: #594045;
 }
 
 .write-review-button {
   width: 100%;
   border: 0;
-  background: #d56989;
-  color: white;
+  background: #fbbf24;
+  color: #fff;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -382,7 +487,7 @@ button {
   gap: 8px;
   padding: 13px;
   border-radius: 16px;
-  background: rgba(194, 220, 128, 0.22);
+  background: rgba(255, 255, 255, 0.45);
   border: 1px solid #c2dc80;
 }
 
@@ -393,8 +498,13 @@ button {
   background: white;
   display: grid;
   place-items: center;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(89, 64, 69, 0.05);
   font-size: 20px;
+  color: #fbbf24;
+}
+
+.community-icon svg {
+  color: #fbbf24;
 }
 
 .community-copy {
@@ -408,21 +518,22 @@ button {
 .community-copy strong {
   font-size: 10px;
   line-height: 12.5px;
-  color: #111c2d;
+  color: #4b6515;
 }
 
 .community-copy span {
   font-size: 12px;
   line-height: 15px;
-  color: #111c2d;
+  color: #594045;
 }
 
 .review-section {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .reviews-header {
   display: flex;
+  height: 28px;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -435,13 +546,14 @@ button {
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
-  color: #111c2d;
+  color: #594045;
 }
 
 .sort-button {
+  margin-left: auto;
   background: transparent;
   border: 0;
-  color: #d56989;
+  color: #594045;
   font-size: 10px;
   letter-spacing: 0.4px;
   font-weight: 700;
@@ -450,9 +562,10 @@ button {
 
 .filter-scroll {
   display: flex;
-  gap: 8px;
+  justify-content: flex-start;
+  gap: 12px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  padding-bottom: 0;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -463,11 +576,16 @@ button {
 
 .filter-chip {
   flex: 0 0 auto;
-  padding: 6px 14px;
+  display: inline-flex;
+  height: 28px;
+  min-height: 28px;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 16px;
   border: 0;
   border-radius: 999px;
   background: #c2dc80;
-  color: #111c2d;
+  color: #4b6515;
   font-size: 12px;
   line-height: 16px;
   font-weight: 600;
@@ -475,9 +593,19 @@ button {
 }
 
 .filter-chip.active {
-  background: #d56989;
+  background: #fbbf24;
   color: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.filter-chip .filter-icon {
+  flex: 0 0 auto;
+  color: currentColor;
+}
+
+.filter-chip .filter-star {
+  color: #fbbf24;
+  fill: #fbbf24;
 }
 
 .review-list {
@@ -496,8 +624,8 @@ button {
   border-radius: 18px;
   padding: 14px;
   box-sizing: border-box;
-  box-shadow: 0 1px 2px rgba(17, 28, 45, 0.06);
-  border: 1px solid rgba(17, 28, 45, 0.03);
+  box-shadow: 0 1px 2px rgba(89, 64, 69, 0.06);
+  border: 1px solid rgba(89, 64, 69, 0.03);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -514,18 +642,12 @@ button {
 
 .bottom-nav.review-page button b {
   color: #9ca3af;
-  font: 400 9.5px/14.25px "Inter:Regular", sans-serif;
+  font: 600 9.5px/14.25px "Inter:Bold", sans-serif;
 }
 
 .bottom-nav.review-page .review-tab.active > span {
   border-radius: 50%;
   background: rgba(234, 156, 175, 0.25);
-}
-
-.bottom-nav button.active b {
-  color: #d56989;
-  font-family: "Inter:Bold", sans-serif;
-  font-weight: 700;
 }
 
 .review-list {
@@ -548,7 +670,7 @@ button {
 .user-meta strong {
   font-size: 14px;
   line-height: 20px;
-  color: #111c2d;
+  color: #594045;
   letter-spacing: 0.14px;
 }
 
@@ -556,7 +678,7 @@ button {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  background: rgba(213, 105, 137, 0.25);
+  background: rgba(194, 220, 128, 0.35);
   color: #594045;
   font-size: 10px;
   line-height: 15px;
@@ -590,13 +712,24 @@ button {
   font-size: 10px;
   line-height: 14px;
   font-weight: 700;
-  color: #111c2d;
+  color: #4b6515;
 }
 
 .review-date {
   font-size: 12px;
   line-height: 16px;
   color: #594045;
+}
+
+.review-page-heading p,
+.search-box input,
+.search-box input::placeholder,
+.market-location,
+.rating-description span,
+.community-copy span,
+.review-date {
+  font-family: "Inter:Regular", Inter, sans-serif;
+  font-weight: 400;
 }
 
 .review-tags {
@@ -613,10 +746,16 @@ button {
   border-radius: 12px;
   background: rgba(194, 220, 128, 0.28);
   border: 1px solid #c2dc80;
-  color: #354b0e;
+  color: #4b6515;
   font-size: 11px;
   font-weight: 700;
   position: relative;
+}
+
+.review-tag:nth-child(2) {
+  background: #fbbf24;
+  border-color: #fbbf24;
+  color: #594045;
 }
 
 .review-tag::before {
@@ -630,8 +769,10 @@ button {
 
 .review-text {
   margin: 0;
-  color: #111c2d;
+  color: #594045;
+  font-family: "Inter:Regular", Inter, sans-serif;
   font-size: 14px;
+  font-weight: 400;
   line-height: 22.75px;
   word-wrap: break-word;
 }
@@ -648,7 +789,7 @@ button {
   height: 112px;
   border-radius: 16px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(213, 105, 137, 0.2), rgba(194, 220, 128, 0.2));
+  background: linear-gradient(135deg, rgba(194, 220, 128, 0.2), rgba(251, 191, 36, 0.2));
 }
 
 .photo-image {
@@ -657,13 +798,13 @@ button {
   object-fit: cover;
   display: block;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(17, 28, 45, 0.12)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(89, 64, 69, 0.12)),
     url('/assets/2312e.png') center/cover no-repeat;
 }
 
 .photo-frame:nth-child(2) .photo-image {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(17, 28, 45, 0.12)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(89, 64, 69, 0.12)),
     url('/assets/e576e.png') center/cover no-repeat;
 }
 
@@ -671,8 +812,8 @@ button {
   position: absolute;
   right: 8px;
   bottom: 8px;
-  background: rgba(38, 49, 67, 0.75);
-  color: #ecf1ff;
+  background: rgba(89, 64, 69, 0.8);
+  color: #fff;
   font-size: 10px;
   line-height: 15px;
   border-radius: 8px;
@@ -682,8 +823,8 @@ button {
 .helpful-button {
   appearance: none;
   border: 0;
-  background: #f0f3ff;
-  color: #594045;
+  background: rgba(194, 220, 128, 0.35);
+  color: #4b6515;
   border-radius: 999px;
   padding: 6px 12px;
   display: inline-flex;
@@ -713,12 +854,12 @@ button {
   gap: 8px;
   margin: 0 auto;
   background: #ffffff;
-  color: #d65f82;
-  border: 1px solid #df6b8f;
+  color: #4b6515;
+  border: 1px solid #fbbf24;
   border-radius: 24px;
   padding: 0 18px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 }
@@ -726,7 +867,7 @@ button {
 .chevron-icon {
   width: 18px;
   height: 18px;
-  color: #d65f82;
+  color: #4b6515;
 }
 
 .bottom-nav {
@@ -745,6 +886,15 @@ button {
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 -4px 25px rgba(213, 105, 137, 0.08);
   backdrop-filter: blur(6px);
+}
+
+.mobile-page:has(.market-summary-card) .bottom-nav {
+  border-color: rgba(194, 220, 128, 0.8);
+  box-shadow: 0 -4px 25px rgba(75, 101, 21, 0.08);
+}
+
+.mobile-page:has(.market-summary-card) .bottom-nav button {
+  color: #594045;
 }
 
 .bottom-nav button {
@@ -781,8 +931,13 @@ button {
   background: rgba(234, 156, 175, 0.25);
 }
 
+.mobile-page:has(.market-summary-card) .bottom-nav button.active > span,
+.mobile-page:has(.market-summary-card) .bottom-nav.review-page .review-tab.active > span {
+  background: rgba(194, 220, 128, 0.5);
+}
+
 .bottom-nav button.active b {
-  color: #d56989;
+  color: #fbbf24;
   font-family: "Inter:Bold", sans-serif;
   font-weight: 700;
 }
@@ -818,9 +973,25 @@ button {
   color: #d56989;
 }
 
+.mobile-page:has(.market-summary-card) button:focus-visible,
+.mobile-page:has(.market-summary-card) input:focus-visible {
+  outline-color: #fbbf24;
+}
+
+.mobile-page:has(.market-summary-card) .bottom-nav button.active b,
+.mobile-page:has(.market-summary-card) .bottom-nav.review-page .review-tab.active b,
+.mobile-page:has(.market-summary-card) .bottom-nav.review-page .review-tab.active,
+.mobile-page:has(.market-summary-card) .bottom-nav.review-page .review-tab.active > span svg {
+  color: #4b6515;
+}
+
+.mobile-page:has(.market-summary-card) .bottom-nav.review-page .review-tab.active > span {
+  background: rgba(194, 220, 128, 0.5);
+}
+
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid #d56989;
+  outline: 2px solid #fbbf24;
   outline-offset: 2px;
 }
 

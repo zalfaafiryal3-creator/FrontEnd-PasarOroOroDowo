@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+
+@font-face { font-family: 'Inter:Bold'; src: url('https://static.figma.com/font/Inter_1') format('woff2'); font-style: normal; font-weight: 700; }
+@font-face { font-family: 'Inter:Regular'; src: url('https://static.figma.com/font/Inter_1') format('woff2'); font-style: normal; font-weight: 400; }
+@font-face { font-family: 'Plus Jakarta Sans:Bold'; src: url('https://static.figma.com/font/PlusJakartaSans_wght__2') format('woff2'); font-style: normal; font-weight: 700; }
+@font-face { font-family: 'Plus Jakarta Sans:Regular'; src: url('https://static.figma.com/font/PlusJakartaSans_wght__2') format('woff2'); font-style: normal; font-weight: 400; }
+@font-face { font-family: 'Plus Jakarta Sans:SemiBold'; src: url('https://static.figma.com/font/PlusJakartaSans_wght__2') format('woff2'); font-style: normal; font-weight: 600; }
+
+body { margin: 0; }
+button, a { cursor: pointer; }
+.pj-bold { font-family: 'Plus Jakarta Sans:Bold', sans-serif; font-weight: 700; }
+.pj-regular { font-family: 'Plus Jakarta Sans:Regular', sans-serif; font-weight: 400; }
+.pj-semibold { font-family: 'Plus Jakarta Sans:SemiBold', sans-serif; font-weight: 600; }
+.inter-bold { font-family: 'Inter:Bold', sans-serif; font-weight: 700; }
+.inter-regular { font-family: 'Inter:Regular', sans-serif; font-weight: 400; }
+.product-suji { width: 138.24%; max-width: none; margin-left: -22.46%; }
+.product-lemper { width: 174.67%; max-width: none; margin-left: -33.44%; }

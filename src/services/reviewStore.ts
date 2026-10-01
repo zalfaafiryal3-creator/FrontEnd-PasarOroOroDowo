@@ -110,3 +110,11 @@ export function getOverallAverage(items: MarketReview[]): number {
   const total = items.reduce((sum, review) => sum + review.rating, 0);
   return Math.min(5, Math.max(0, total / items.length));
 }
+
+export function incrementHelpful(id: string): void {
+  reviews = reviews.map((review) =>
+    review.id === id ? { ...review, helpful: review.helpful + 1 } : review
+  );
+  listeners.forEach((listener) => listener());
+}
+

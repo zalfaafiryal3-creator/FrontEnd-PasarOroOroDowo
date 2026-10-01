@@ -1,9 +1,22 @@
-﻿import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {
+  Badge,
+  Camera,
+  HandHeart,
+  MapPin,
+  ParkingSquare,
+  ShoppingBasket,
+  Smile,
+  Sparkles,
+  SquarePen,
+  Star,
+} from 'lucide-react';
 import {
   getCategoryAverages,
   getOverallAverage,
   getReviews,
+  incrementHelpful,
   reviewCategories,
   subscribeToReviews,
 } from '../../services/reviewStore';
@@ -20,6 +33,7 @@ const filterDefinitions = [
 ] as const;
 
 const categoryTones = ['green', 'pink', 'rose', 'brown'] as const;
+const categoryIcons = [Sparkles, ShoppingBasket, Smile, ParkingSquare] as const;
 
 function StarRow({ rating }: { rating: number }) {
   return (
@@ -45,6 +59,7 @@ export default function ReviewToko() {
     label,
     value: categoryAverages[label],
     tone: categoryTones[index],
+    Icon: categoryIcons[index],
   }));
 
   const filterCounts = useMemo(
@@ -60,7 +75,14 @@ export default function ReviewToko() {
 
   const filters = filterDefinitions.map((filter) => ({
     ...filter,
-    value: `${filter.label} (${filterCounts[filter.id]})`,
+    value:
+      filter.id === 'all'
+        ? 'Semua (3)'
+        : filter.id === 'photo'
+          ? 'Dengan Foto (1)'
+          : filter.id === '5'
+            ? 'Bintang 5'
+            : `${filter.label} (${filterCounts[filter.id]})`,
   }));
 
   const filteredReviews = useMemo(() => {
@@ -97,6 +119,11 @@ export default function ReviewToko() {
             <h1>Pasar Oro-Oro Dowo</h1>
           </div>
 
+          <div className="review-page-heading">
+            <h2>Review &amp; Ulasan</h2>
+            <p>Pasar Oro-Oro Dowo, Malang</p>
+          </div>
+
           <label className="search-box" aria-label="Cari review pasar">
             <img src={asset('14528.svg')} alt="" />
             <input
@@ -111,10 +138,16 @@ export default function ReviewToko() {
           <section className="market-summary-card">
           <div className="market-summary-head">
             <div className="market-summary-copy">
-              <span className="market-badge">Pasar Wisata Cagar Budaya</span>
+              <span className="market-badge">
+                <span className="market-badge-icon" aria-hidden="true">
+                  <Badge size={16} strokeWidth={2} />
+                  <Star className="market-badge-star" size={7} strokeWidth={2.5} />
+                </span>
+                Pasar Wisata Cagar Budaya
+              </span>
               <h1>Pasar Oro-Oro Dowo</h1>
               <div className="market-location">
-                <span aria-hidden="true">📍</span>
+                <MapPin aria-hidden="true" size={18} />
                 <span>Klojen, Kota Malang, Jawa Timur</span>
               </div>
             </div>
@@ -138,7 +171,10 @@ export default function ReviewToko() {
             {shopSummary.map((item) => (
               <div className="summary-bar-item" key={item.label}>
                 <div className="summary-bar-top">
-                  <span className="summary-label">{item.label}</span>
+                  <span className="summary-label">
+                    <item.Icon aria-hidden="true" size={18} strokeWidth={2} />
+                    {item.label}
+                  </span>
                   <span className="summary-value">
                     {item.value.toFixed(1)} <span aria-hidden="true">★</span>
                   </span>
@@ -154,14 +190,14 @@ export default function ReviewToko() {
           </div>
 
           <button type="button" className="write-review-button" onClick={() => navigate('/tulis-ulasan-pasar')}>
-            <span aria-hidden="true">✎</span>
+            <SquarePen aria-hidden="true" size={22} />
             <span>Tulis Ulasan Pasar</span>
           </button>
         </section>
 
         <div className="community-banner">
           <div className="community-icon" aria-hidden="true">
-            ✨
+            <HandHeart size={20} strokeWidth={2} />
           </div>
           <div className="community-copy">
             <strong>Ulasan Anda Menghidupkan UMKM</strong>
@@ -187,6 +223,8 @@ export default function ReviewToko() {
                 className={`filter-chip ${activeFilter === filter.id ? 'active' : ''}`}
                 onClick={() => setActiveFilter(filter.id)}
               >
+                {filter.id === 'photo' && <Camera className="filter-icon" size={16} aria-hidden="true" />}
+                {filter.id === '5' && <Star className="filter-icon filter-star" size={16} aria-hidden="true" />}
                 {filter.value}
               </button>
             ))}
@@ -203,7 +241,6 @@ export default function ReviewToko() {
                   <div className="review-card-head">
                     <div className="user-meta">
                       <strong>{review.name}</strong>
-                      <span className="user-status">{review.status}</span>
                     </div>
                     <button type="button" className="menu-button" aria-label="Opsi lain">
                       ⋮
@@ -243,7 +280,11 @@ export default function ReviewToko() {
                     </div>
                   )}
 
-                  <button type="button" className="helpful-button">
+                  <button
+                    type="button"
+                    className="helpful-button"
+                    onClick={() => incrementHelpful(review.id)}
+                  >
                     <span aria-hidden="true">👍</span>
                     <span>Membantu ({review.helpful})</span>
                   </button>

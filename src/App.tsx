@@ -6,6 +6,8 @@ import LandingPage from './pages/LandingPage/LandingPage';
 import InfoKunjungan from './pages/InfoKunjungan/InfoKunjungan';
 import Promo from './pages/Promo/Promo';
 import Rekomendasi from './pages/Rekomendasi/Rekomendasi';
+import Toko from './pages/Toko/Toko';
+import DetailToko from './pages/DetailToko/DetailToko';
 import ReviewPasar from './pages/ReviewPasar/ReviewPasar';
 import TulisUlasanPasar from './pages/TulisUlasanPasar/TulisUlasanPasar';
 
@@ -35,7 +37,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<SplashScreen />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/toko" element={<Home />} />
+        <Route path="/toko" element={<Toko />} />
+        <Route path="/detail-toko" element={<DetailToko />} />
+        <Route path="/detail-toko/:id" element={<DetailToko />} />
         <Route path="/fasilitas-pasar" element={<FasilitasPasar />} />
         <Route path="/landing-page" element={<LandingPage />} />
         <Route path="/info-kunjungan" element={<InfoKunjungan />} />
