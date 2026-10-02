@@ -1,79 +1,60 @@
-import { Link } from 'react-router-dom';
-import './InfoKunjungan.css';
+import { useNavigate } from "react-router-dom"
+import "./InfoKunjungan.css"
 
 const assetPathPrefix = "/assets"
+const imgInfoIcon = `${assetPathPrefix}/23853.svg`
 const imgIconHeroiconsOutlineFire = `${assetPathPrefix}/75326.svg`
 const imgContainer = `${assetPathPrefix}/ab505.svg`
-const imgContainer1 = `${assetPathPrefix}/59a09.svg`
-const imgMargin = `${assetPathPrefix}/fd4a1.svg`
+const imgContainer1 = `${assetPathPrefix}/0e96c.svg`
+const imgMargin = `${assetPathPrefix}/75fee.svg`
 const imgContainer2 = `${assetPathPrefix}/4ffe8.svg`
 const imgContainer3 = `${assetPathPrefix}/79bd8.svg`
 const imgContainer4 = `${assetPathPrefix}/5dd2d.svg`
 const imgContainer5 = `${assetPathPrefix}/7d1be.svg`
-const imgContainer6 = `${assetPathPrefix}/31dcd.svg`
-const imgShadow = `${assetPathPrefix}/669c8.svg`
+const imgContainer6 = `${assetPathPrefix}/068f1.svg`
+const imgShadow = `${assetPathPrefix}/6cf3f.svg`
 const imgMargin1 = `${assetPathPrefix}/aaff8.svg`
 const imgMargin2 = `${assetPathPrefix}/71346.svg`
 const imgMargin3 = `${assetPathPrefix}/42434.svg`
 const imgContainer7 = `${assetPathPrefix}/75154.svg`
 const imgContainer8 = `${assetPathPrefix}/8807b.svg`
 const imgContainer9 = `${assetPathPrefix}/19b83.svg`
-const imgSvg = `${assetPathPrefix}/dfd0c.svg`
-const imgSvg1 = `${assetPathPrefix}/2781e.svg`
 const imgSvg2 = `${assetPathPrefix}/3de6e.svg`
 
-function IconHeroiconsOutlineFire({ className }: { className?: string }) {
-  return (
-    <div
-      className={className || "relative size-[23px]"}
-      data-node-id="1:2"
-      data-name="icon / heroicons / Outline / fire"
-    >
-      <img
-        alt=""
-        className="absolute block inset-0 max-w-none size-full"
-        src={imgIconHeroiconsOutlineFire}
-      />
-    </div>
-  )
-}
-
 export default function InfoKunjungan() {
+  const navigate = useNavigate()
+
   return (
     <div
-      className="content-stretch flex min-h-dvh w-full flex-col gap-[23px] items-center relative"
+      className="visit-page relative w-full min-h-dvh"
       data-node-id="1:4"
-      style={{
-        backgroundImage:
-          "linear-gradient(90deg, rgb(243, 238, 241) 0%, rgb(243, 238, 241) 100%), linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%)",
-      }}
       data-name="Info Kunjungan"
     >
-      <div
-        className="content-stretch flex flex-col items-start relative shrink-0 w-full"
-        data-node-id="1:5"
-      >
+      <div className="visit-layout relative w-full" data-node-id="1:5">
         <div
-          className="backdrop-blur-[12px] bg-[rgba(243,238,241,0.95)] border border-[rgba(213,105,137,0.15)] border-solid content-stretch flex flex-col items-start p-px relative shrink-0 w-full"
+          className="visit-header relative backdrop-blur-[12px] flex flex-col items-start w-full"
           data-node-id="1:6"
           data-name="Header"
         >
           <div
-            className="h-[64px] relative shrink-0 w-full"
+            className="h-[64px] max-w-[440px] relative shrink-0 w-full"
             data-node-id="1:7"
             data-name="Container"
           >
-            <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex items-center justify-between max-w-[inherit] px-[16px] relative size-full">
+            <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
               <div
-                className="content-stretch flex h-[48px] max-w-full items-center justify-between py-[8px] relative shrink-0 w-[358px] md:w-full"
+                className="absolute content-stretch flex h-[48px] items-center justify-between left-[16px] right-[28px] py-[8px] top-[8px]"
                 data-node-id="1:8"
                 data-name="Interactive Header Nav for In-Store Navigation"
               >
                 <button
                   type="button"
                   aria-label="Kembali"
-                  onClick={() => window.history.back()}
-                  className="bg-white content-stretch cursor-pointer drop-shadow-[0px_1px_1px_rgba(0,0,0,0.05)] flex items-center justify-center relative rounded-[9999px] shrink-0 size-[40px]"
+                  onClick={() => {
+                    if (window.history.length > 1) window.history.back()
+                    else window.scrollTo({ top: 0, behavior: "smooth" })
+                  }}
+                  className="bg-white content-stretch drop-shadow-[0px_1px_1px_rgba(0,0,0,0.05)] flex items-center justify-center relative rounded-[9999px] shrink-0 size-[40px]"
                   data-node-id="1:9"
                   data-name="Button - Kembali"
                 >
@@ -84,13 +65,13 @@ export default function InfoKunjungan() {
                   >
                     <img
                       alt=""
-                      className="absolute block inset-0 max-w-none size-full"
+                      className="block max-w-none shrink-0"
                       src={imgContainer}
                     />
                   </div>
                 </button>
                 <div
-                  className="content-stretch flex flex-1 flex-col items-start relative min-w-0"
+                  className="content-stretch flex flex-col items-start relative shrink-0 flex-1 min-w-0"
                   data-node-id="1:12"
                   data-name="Title & Subtitle"
                 >
@@ -100,9 +81,15 @@ export default function InfoKunjungan() {
                     data-name="Heading 1"
                   >
                     <div
-                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[16px] text-center tracking-[-0.4px] whitespace-nowrap"
+                      className="[word-break:break-word] flex flex-row items-center gap-[4px] font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#594045] text-[16px] text-center tracking-[-0.4px] design-text"
                       data-node-id="1:14"
                     >
+                      <img
+                        src={imgInfoIcon}
+                        alt=""
+                        aria-hidden="true"
+                        className="visit-title-icon"
+                      />
                       <p className="leading-[24px]">Info Kunjungan</p>
                     </div>
                   </div>
@@ -118,12 +105,12 @@ export default function InfoKunjungan() {
                     >
                       <img
                         alt=""
-                        className="absolute block inset-0 max-w-none size-full"
+                        className="block max-w-none shrink-0"
                         src={imgContainer1}
                       />
                     </div>
                     <div
-                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#de3b75] text-[12px] text-center whitespace-nowrap"
+                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[12px] text-center design-text"
                       data-node-id="1:18"
                     >
                       <p className="leading-[16px]">
@@ -137,16 +124,17 @@ export default function InfoKunjungan() {
           </div>
         </div>
         <div
-          className="content-stretch grid w-full grid-cols-1 gap-[16px] items-start pt-[12px] px-[16px] relative shrink-0 md:grid-cols-2 xl:grid-cols-3"
+          className="visit-content grid grid-cols-1 gap-[16px] items-start pt-[14px] px-[16px]"
           data-node-id="1:19"
           data-name="Scrollable Content Area"
         >
           <div
-            className="border border-[rgba(254,205,211,0.6)] border-solid content-stretch flex flex-col items-start overflow-clip p-[17px] relative rounded-[24px] shadow-[0px_10px_25px_-3px_rgba(180,70,100,0.05)] shrink-0 w-full md:col-span-2 xl:col-span-1"
+            className="border border-[#594045] border-solid content-stretch flex flex-col items-start overflow-clip p-[17px] relative rounded-[24px] shadow-[0px_10px_25px_-3px_rgba(180,70,100,0.05)] shrink-0 w-full min-w-0"
+            id="market"
             data-node-id="1:20"
             style={{
               backgroundImage:
-                "linear-gradient(148.01689292178452deg, rgb(255, 255, 255) 0%, rgb(255, 247, 249) 50%, rgb(250, 230, 238) 100%)",
+                "linear-gradient(148.01689292178452deg, rgb(251, 191, 36) 0%, rgb(194, 220, 128) 50%, rgb(251, 191, 36) 100%)",
             }}
             data-name="Section - HeroCard"
           >
@@ -188,7 +176,7 @@ export default function InfoKunjungan() {
                     >
                       <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[12px] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[12px] design-text"
                           data-node-id="1:28"
                         >
                           <p className="leading-[16px]">Buka Sekarang</p>
@@ -197,12 +185,12 @@ export default function InfoKunjungan() {
                     </div>
                   </div>
                   <div
-                    className="bg-white border border-[#fecdd3] border-solid content-stretch flex flex-col items-start px-[11px] py-[3px] relative rounded-[9999px] shrink-0"
+                    className="bg-white border border-[#594045] border-solid content-stretch flex flex-col items-start px-[11px] py-[3px] relative rounded-[9999px] shrink-0"
                     data-node-id="1:29"
                     data-name="Background+Border"
                   >
                     <div
-                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#de3b75] text-[11px] tracking-[0.275px] whitespace-nowrap"
+                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[11px] tracking-[0.275px] design-text"
                       data-node-id="1:30"
                     >
                       <p className="leading-[16.5px]">Cagar Budaya SNI</p>
@@ -239,7 +227,7 @@ export default function InfoKunjungan() {
                     >
                       <img
                         alt=""
-                        className="absolute block inset-0 max-w-none size-full"
+                        className="block max-w-none shrink-0"
                         src={imgMargin}
                       />
                     </div>
@@ -249,7 +237,7 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#4b5563] text-[12px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[12px] design-text"
                         data-node-id="1:38"
                       >
                         <p className="leading-[16px] mb-0">
@@ -268,7 +256,7 @@ export default function InfoKunjungan() {
                   data-name="Quick Metrics Bar"
                 >
                   <div
-                    className="bg-[rgba(255,255,255,0.8)] border border-[rgba(255,228,230,0.7)] border-solid relative rounded-[16px] min-w-0 flex-1"
+                    className="bg-[rgba(255,255,255,0.8)] border border-[rgba(255,228,230,0.7)] border-solid relative rounded-[16px] shrink-0 flex-1 min-w-0"
                     data-node-id="1:40"
                     data-name="Overlay+Border"
                   >
@@ -280,7 +268,7 @@ export default function InfoKunjungan() {
                       >
                         <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center relative size-full">
                           <div
-                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[10px] text-center tracking-[0.5px] uppercase whitespace-nowrap"
+                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[10px] text-center tracking-[0.5px] uppercase design-text"
                             data-node-id="1:42"
                           >
                             <p className="leading-[15px]">JAM BUKA</p>
@@ -288,7 +276,7 @@ export default function InfoKunjungan() {
                         </div>
                       </div>
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] text-center whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] text-center design-text"
                         data-node-id="1:43"
                       >
                         <p className="leading-[16px]">06.00 - 17.00</p>
@@ -296,7 +284,7 @@ export default function InfoKunjungan() {
                     </div>
                   </div>
                   <div
-                    className="bg-[rgba(255,255,255,0.8)] border border-[rgba(255,228,230,0.7)] border-solid relative rounded-[16px] min-w-0 flex-1"
+                    className="bg-[rgba(255,255,255,0.8)] border border-[rgba(255,228,230,0.7)] border-solid relative rounded-[16px] shrink-0 flex-1 min-w-0"
                     data-node-id="1:44"
                     data-name="Overlay+Border"
                   >
@@ -308,7 +296,7 @@ export default function InfoKunjungan() {
                       >
                         <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center relative size-full">
                           <div
-                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[10px] text-center tracking-[0.5px] uppercase whitespace-nowrap"
+                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[10px] text-center tracking-[0.5px] uppercase design-text"
                             data-node-id="1:46"
                           >
                             <p className="leading-[15px]">PEDAGANG</p>
@@ -316,7 +304,7 @@ export default function InfoKunjungan() {
                         </div>
                       </div>
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] text-center whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] text-center design-text"
                         data-node-id="1:47"
                       >
                         <p className="leading-[16px]">± 251 Kios</p>
@@ -324,7 +312,7 @@ export default function InfoKunjungan() {
                     </div>
                   </div>
                   <div
-                    className="bg-[rgba(255,255,255,0.8)] border border-[rgba(255,228,230,0.7)] border-solid relative rounded-[16px] min-w-0 flex-1"
+                    className="bg-[rgba(255,255,255,0.8)] border border-[rgba(255,228,230,0.7)] border-solid relative rounded-[16px] shrink-0 flex-1 min-w-0"
                     data-node-id="1:48"
                     data-name="Overlay+Border"
                   >
@@ -336,7 +324,7 @@ export default function InfoKunjungan() {
                       >
                         <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-center relative size-full">
                           <div
-                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[10px] text-center tracking-[0.5px] uppercase whitespace-nowrap"
+                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[10px] text-center tracking-[0.5px] uppercase design-text"
                             data-node-id="1:50"
                           >
                             <p className="leading-[15px]">EST. BERDIRI</p>
@@ -344,7 +332,7 @@ export default function InfoKunjungan() {
                         </div>
                       </div>
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#de3b75] text-[12px] text-center whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[12px] text-center design-text"
                         data-node-id="1:51"
                       >
                         <p className="leading-[16px]">Tahun 1932</p>
@@ -356,12 +344,13 @@ export default function InfoKunjungan() {
             </div>
           </div>
           <div
-            className="bg-white border border-[#ffe4e6] border-solid content-stretch flex flex-col gap-[12px] items-start p-[17px] relative rounded-[24px] shrink-0 w-full"
+            className="bg-white border border-[#594045] border-solid content-stretch flex flex-col gap-[12px] items-start p-[17px] relative rounded-[24px] shrink-0 w-full min-w-0"
+            id="jam-operasional"
             data-node-id="1:52"
             data-name="Section1_OperationalHours"
           >
             <div
-              className="absolute bg-[rgba(255,255,255,0)] inset-[-1px_-1px_-0.5px_-1px] rounded-[24px] shadow-[0px_4px_20px_-2px_rgba(222,59,117,0.08),0px_2px_6px_-1px_rgba(0,0,0,0.02)]"
+              className="absolute bg-[rgba(255,255,255,0)] inset-[-1px_-1px_-0.5px_-1px] rounded-[24px] shadow-[0px_4px_20px_-2px_#594045,0px_2px_6px_-1px_#594045]"
               data-node-id="1:53"
               data-name="Section1_OperationalHours:shadow"
             />
@@ -378,7 +367,7 @@ export default function InfoKunjungan() {
                 >
                   <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[8px] items-center relative size-full">
                     <div
-                      className="bg-[#fdf2f5] content-stretch flex items-center justify-center relative rounded-[12px] shrink-0 size-[32px]"
+                      className="bg-[rgba(194,220,128,0.5)] content-stretch flex items-center justify-center relative rounded-[12px] shrink-0 size-[32px]"
                       data-node-id="1:56"
                       data-name="Background"
                     >
@@ -389,7 +378,7 @@ export default function InfoKunjungan() {
                       >
                         <img
                           alt=""
-                          className="absolute block inset-0 max-w-none size-full"
+                          className="block max-w-none shrink-0"
                           src={imgContainer2}
                         />
                       </div>
@@ -405,7 +394,7 @@ export default function InfoKunjungan() {
                         data-name="Heading 3"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[14px] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[14px] design-text"
                           data-node-id="1:61"
                         >
                           <p className="leading-[20px]">Jam Operasional</p>
@@ -417,7 +406,7 @@ export default function InfoKunjungan() {
                         data-name="Container"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[11px] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[11px] design-text"
                           data-node-id="1:63"
                         >
                           <p className="leading-[16.5px]">
@@ -435,7 +424,7 @@ export default function InfoKunjungan() {
                 >
                   <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start px-[8px] py-[2px] relative size-full">
                     <div
-                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[12px] whitespace-nowrap"
+                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[12px] design-text"
                       data-node-id="1:65"
                     >
                       <p className="leading-[16px]">Tutup 17.00 WIB</p>
@@ -461,7 +450,7 @@ export default function InfoKunjungan() {
                     data-name="Container"
                   >
                     <div
-                      className="bg-[#c2dc80] relative rounded-[9999px] shrink-0 size-[8px]"
+                      className="bg-[#fbbf24] relative rounded-[9999px] shrink-0 size-[8px]"
                       data-node-id="1:69"
                       data-name="Background"
                     />
@@ -471,7 +460,7 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] design-text"
                         data-node-id="1:71"
                       >
                         <p className="leading-[16px]">Senin - Jumat</p>
@@ -484,7 +473,7 @@ export default function InfoKunjungan() {
                     data-name="Container"
                   >
                     <div
-                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[12px] whitespace-nowrap"
+                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[12px] design-text"
                       data-node-id="1:73"
                     >
                       <p className="leading-[16px]">06.00 - 17.00 WIB</p>
@@ -492,7 +481,7 @@ export default function InfoKunjungan() {
                   </div>
                 </div>
                 <div
-                  className="bg-[rgba(253,242,245,0.7)] border border-[rgba(222,59,117,0.1)] border-solid content-stretch flex items-center justify-between p-[11px] relative rounded-[16px] shrink-0 w-full"
+                  className="bg-[rgba(251,191,36,0.35)] border border-[#594045] border-solid content-stretch flex items-center justify-between p-[11px] relative rounded-[16px] shrink-0 w-full"
                   data-node-id="1:74"
                   data-name="Weekend"
                 >
@@ -503,7 +492,7 @@ export default function InfoKunjungan() {
                   >
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[8px] items-center relative size-full">
                       <div
-                        className="bg-[#de3b75] relative rounded-[9999px] shrink-0 size-[8px]"
+                        className="bg-[#4b6515] relative rounded-[9999px] shrink-0 size-[8px]"
                         data-node-id="1:76"
                         data-name="Background"
                       />
@@ -518,7 +507,7 @@ export default function InfoKunjungan() {
                           data-name="Container"
                         >
                           <div
-                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#c22860] text-[12px] whitespace-nowrap"
+                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#594045] text-[12px] design-text"
                             data-node-id="1:79"
                           >
                             <p className="leading-[16px]">
@@ -527,7 +516,7 @@ export default function InfoKunjungan() {
                           </div>
                         </div>
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Medium'] font-medium justify-center leading-[0] relative shrink-0 text-[10px] text-[rgba(222,59,117,0.8)] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Medium'] font-medium justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[10px] design-text"
                           data-node-id="1:80"
                         >
                           <p className="leading-[16px]">
@@ -544,7 +533,7 @@ export default function InfoKunjungan() {
                   >
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col items-start relative size-full">
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#c22860] text-[12px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[12px] design-text"
                         data-node-id="1:82"
                       >
                         <p className="leading-[16px]">05.00 - 17.00 WIB</p>
@@ -578,14 +567,14 @@ export default function InfoKunjungan() {
                         data-name="Container"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] design-text"
                           data-node-id="1:88"
                         >
                           <p className="leading-[16px]">{`Jajanan Sore & Kuliner Luar`}</p>
                         </div>
                       </div>
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[10px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[10px] design-text"
                         data-node-id="1:89"
                       >
                         <p className="leading-[16px]">{`Kios teras luar & foodcourt tertentu`}</p>
@@ -598,7 +587,7 @@ export default function InfoKunjungan() {
                     data-name="Container"
                   >
                     <div
-                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[12px] whitespace-nowrap"
+                      className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[12px] design-text"
                       data-node-id="1:91"
                     >
                       <p className="leading-[16px]">06.00 - 17.00 WIB</p>
@@ -620,7 +609,7 @@ export default function InfoKunjungan() {
                 >
                   <img
                     alt=""
-                    className="absolute block inset-0 max-w-none size-full"
+                    className="block max-w-none shrink-0"
                     src={imgContainer3}
                   />
                 </div>
@@ -631,7 +620,7 @@ export default function InfoKunjungan() {
                 >
                   <div className="bg-clip-padding border-0 border-[transparent] border-solid relative size-full">
                     <div
-                      className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Plus_Jakarta_Sans:Medium'] font-medium justify-center leading-[0] left-0 text-[#92400e] text-[11px] top-[15.75px] whitespace-nowrap"
+                      className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Plus_Jakarta_Sans:Medium'] font-medium justify-center leading-[0] left-0 text-[#92400e] text-[11px] top-[15.75px] design-text"
                       data-node-id="1:96"
                     >
                       <p className="leading-[16.5px] mb-0">
@@ -645,12 +634,13 @@ export default function InfoKunjungan() {
             </div>
           </div>
           <div
-            className="bg-white border border-[#ffe4e6] border-solid content-stretch flex flex-col gap-[12px] items-start p-[17px] relative rounded-[24px] shrink-0 w-full"
+            className="bg-white border border-[#594045] border-solid content-stretch flex flex-col gap-[12px] items-start p-[17px] relative rounded-[24px] shrink-0 w-full min-w-0"
+            id="kepadatan"
             data-node-id="1:97"
             data-name="Section2_CrowdDensity"
           >
             <div
-              className="absolute bg-[rgba(255,255,255,0)] inset-[-1px_-1px_-0.5px_-1px] rounded-[24px] shadow-[0px_4px_20px_-2px_rgba(222,59,117,0.08),0px_2px_6px_-1px_rgba(0,0,0,0.02)]"
+              className="absolute bg-[rgba(255,255,255,0)] inset-[-1px_-1px_-0.5px_-1px] rounded-[24px] shadow-[0px_4px_20px_-2px_#594045,0px_2px_6px_-1px_#594045]"
               data-node-id="1:98"
               data-name="Section2_CrowdDensity:shadow"
             />
@@ -666,7 +656,7 @@ export default function InfoKunjungan() {
                   data-name="Container"
                 >
                   <div
-                    className="bg-[#fdf2f5] content-stretch flex items-center justify-center relative rounded-[12px] shrink-0 size-[32px]"
+                    className="bg-[rgba(194,220,128,0.35)] content-stretch flex items-center justify-center relative rounded-[12px] shrink-0 size-[32px]"
                     data-node-id="1:101"
                     data-name="Background"
                   >
@@ -677,7 +667,7 @@ export default function InfoKunjungan() {
                     >
                       <img
                         alt=""
-                        className="absolute block inset-0 max-w-none size-full"
+                        className="block max-w-none shrink-0"
                         src={imgContainer4}
                       />
                     </div>
@@ -693,7 +683,7 @@ export default function InfoKunjungan() {
                       data-name="Heading 3"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[14px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[14px] design-text"
                         data-node-id="1:106"
                       >
                         <p className="leading-[20px]">{`Hari Pasaran & Kepadatan`}</p>
@@ -705,7 +695,7 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[11px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[11px] design-text"
                         data-node-id="1:108"
                       >
                         <p className="leading-[16.5px]">
@@ -716,12 +706,12 @@ export default function InfoKunjungan() {
                   </div>
                 </div>
                 <div
-                  className="bg-[#fff1f2] content-stretch flex flex-col items-start px-[8px] py-[2px] relative rounded-[9999px] shrink-0"
+                  className="bg-[rgba(194,220,128,0.35)] content-stretch flex flex-col items-start px-[8px] py-[2px] relative rounded-[9999px] shrink-0"
                   data-node-id="1:109"
                   data-name="Background"
                 >
                   <div
-                    className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#de3b75] text-[11px] whitespace-nowrap"
+                    className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[11px] design-text"
                     data-node-id="1:110"
                   >
                     <p className="leading-[16.5px]">Live Tren</p>
@@ -751,7 +741,7 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] design-text"
                         data-node-id="1:115"
                       >
                         <p className="leading-[16px]">Senin - Kamis</p>
@@ -763,7 +753,7 @@ export default function InfoKunjungan() {
                       data-name="Background"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[11px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[11px] design-text"
                         data-node-id="1:117"
                       >
                         <p className="leading-[16px]">Rendah - Nyaman</p>
@@ -816,7 +806,7 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#1f2937] text-[12px] design-text"
                         data-node-id="1:125"
                       >
                         <p className="leading-[16px]">Jumat</p>
@@ -828,7 +818,7 @@ export default function InfoKunjungan() {
                       data-name="Background"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#d97706] text-[11px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#d97706] text-[11px] design-text"
                         data-node-id="1:127"
                       >
                         <p className="leading-[16px]">Sedang</p>
@@ -864,7 +854,7 @@ export default function InfoKunjungan() {
                   </div>
                 </div>
                 <div
-                  className="bg-[rgba(255,241,242,0.6)] border border-[rgba(222,59,117,0.2)] border-solid content-stretch flex flex-col gap-[6px] items-start p-[13px] relative rounded-[16px] shrink-0 w-full"
+                  className="bg-[rgba(255,241,242,0.6)] border border-[#c2dc80] border-solid content-stretch flex flex-col gap-[6px] items-start p-[13px] relative rounded-[16px] shrink-0 w-full"
                   data-node-id="1:132"
                   data-name="Weekend"
                 >
@@ -885,19 +875,19 @@ export default function InfoKunjungan() {
                           data-name="Container"
                         >
                           <div
-                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[12px] whitespace-nowrap"
+                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[12px] design-text"
                             data-node-id="1:136"
                           >
                             <p className="leading-[16px]">{`Sabtu & Minggu`}</p>
                           </div>
                         </div>
                         <div
-                          className="bg-[#de3b75] content-stretch flex flex-col items-start px-[6px] py-[2px] relative rounded-[4px] shrink-0"
+                          className="bg-[#4b6515] content-stretch flex flex-col items-start px-[6px] py-[2px] relative rounded-[4px] shrink-0"
                           data-node-id="1:137"
                           data-name="Background"
                         >
                           <div
-                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[9px] text-white uppercase whitespace-nowrap"
+                            className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:ExtraBold'] font-extrabold justify-center leading-[0] relative shrink-0 text-[9px] text-white uppercase design-text"
                             data-node-id="1:138"
                           >
                             <p className="leading-[16px]">PUNCAK</p>
@@ -905,12 +895,12 @@ export default function InfoKunjungan() {
                         </div>
                       </div>
                       <div
-                        className="bg-white border border-[rgba(222,59,117,0.3)] border-solid content-stretch flex flex-col items-start px-[9px] py-[3px] relative rounded-[9999px] shrink-0"
+                        className="bg-white border border-[#4b6515] border-solid content-stretch flex flex-col items-start px-[9px] py-[3px] relative rounded-[9999px] shrink-0"
                         data-node-id="1:139"
                         data-name="Background+Border"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#c22860] text-[11px] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:SemiBold'] font-semibold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[11px] design-text"
                           data-node-id="1:140"
                         >
                           <p className="leading-[16px]">Ramai Wisatawan</p>
@@ -919,13 +909,13 @@ export default function InfoKunjungan() {
                     </div>
                   </div>
                   <div
-                    className="bg-[#ffe4e6] h-[8px] relative rounded-[9999px] shrink-0 w-full"
+                    className="bg-[rgba(194,220,128,0.35)] h-[8px] relative rounded-[9999px] shrink-0 w-full"
                     data-node-id="1:141"
                     data-name="Background"
                   >
                     <div className="bg-clip-padding border-0 border-[transparent] border-solid overflow-clip relative rounded-[inherit] size-full">
                       <div
-                        className="absolute bg-[#de3b75] h-[8px] left-0 right-[8%] rounded-[9999px] top-0"
+                        className="absolute bg-[#4b6515] h-[8px] left-0 right-[8%] rounded-[9999px] top-0"
                         data-node-id="1:142"
                         data-name="Background"
                       />
@@ -951,12 +941,12 @@ export default function InfoKunjungan() {
             </div>
           </div>
           <div
-            className="bg-white border border-[#ffe4e6] border-solid content-stretch flex flex-col gap-[12px] items-start p-[17px] relative rounded-[24px] shrink-0 w-full"
+            className="bg-white border border-[#594045] border-solid content-stretch flex flex-col gap-[12px] items-start p-[17px] relative rounded-[24px] shrink-0 w-full min-w-0"
             data-node-id="1:145"
             data-name="Section3_AccessTransport"
           >
             <div
-              className="absolute bg-[rgba(255,255,255,0)] inset-[-1px_-1px_-0.5px_-1px] rounded-[24px] shadow-[0px_4px_20px_-2px_rgba(222,59,117,0.08),0px_2px_6px_-1px_rgba(0,0,0,0.02)]"
+              className="absolute bg-[rgba(255,255,255,0)] inset-[-1px_-1px_-0.5px_-1px] rounded-[24px] shadow-[0px_4px_20px_-2px_#594045,0px_2px_6px_-1px_#594045]"
               data-node-id="1:146"
               data-name="Section3_AccessTransport:shadow"
             />
@@ -967,7 +957,7 @@ export default function InfoKunjungan() {
             >
               <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[8px] items-center pb-[9px] relative size-full">
                 <div
-                  className="bg-[#fdf2f5] relative rounded-[12px] shrink-0 size-[32px]"
+                  className="bg-[rgba(194,220,128,0.35)] relative rounded-[12px] shrink-0 size-[32px]"
                   data-node-id="1:148"
                   data-name="Background"
                 >
@@ -979,7 +969,7 @@ export default function InfoKunjungan() {
                     >
                       <img
                         alt=""
-                        className="absolute block inset-0 max-w-none size-full"
+                        className="block max-w-none shrink-0"
                         src={imgContainer5}
                       />
                     </div>
@@ -997,7 +987,7 @@ export default function InfoKunjungan() {
                       data-name="Heading 3"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[14px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[14px] design-text"
                         data-node-id="1:153"
                       >
                         <p className="leading-[20px]">{`Akses & Pilihan Transportasi`}</p>
@@ -1009,7 +999,7 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[11px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[11px] design-text"
                         data-node-id="1:155"
                       >
                         <p className="leading-[16.5px]">
@@ -1022,7 +1012,7 @@ export default function InfoKunjungan() {
               </div>
             </div>
             <div
-              className="bg-[#ebf3f2] border border-[#ffe4e6] border-solid h-[128px] relative rounded-[16px] shrink-0 w-full"
+              className="bg-[#ebf3f2] border border-[#c2dc80] border-solid h-[128px] relative rounded-[16px] shrink-0 w-full"
               data-node-id="1:156"
               data-name="Simulated Map Box"
             >
@@ -1080,7 +1070,7 @@ export default function InfoKunjungan() {
                       data-name="Margin"
                     >
                       <div
-                        className="bg-white border border-[#fecdd3] border-solid h-[30px] relative rounded-[9999px] shrink-0 w-[157.7px]"
+                        className="bg-white border border-[#c2dc80] border-solid h-[30px] relative rounded-[9999px] shrink-0 w-[157.7px]"
                         data-node-id="1:163"
                         data-name="Background+Border"
                       >
@@ -1096,12 +1086,12 @@ export default function InfoKunjungan() {
                         >
                           <img
                             alt=""
-                            className="absolute block inset-0 max-w-none size-full"
+                            className="block max-w-none shrink-0"
                             src={imgContainer6}
                           />
                         </div>
                         <div
-                          className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] left-[30.02px] text-[#de3b75] text-[11px] top-[calc(50%-0.75px)] whitespace-nowrap"
+                          className="-translate-y-1/2 [word-break:break-word] absolute flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] left-[30.02px] text-[#4b6515] text-[11px] top-[calc(50%-0.75px)] design-text"
                           data-node-id="1:167"
                         >
                           <p className="leading-[16.5px]">Pasar Oro-Oro Dowo</p>
@@ -1116,7 +1106,7 @@ export default function InfoKunjungan() {
                       <div className="absolute inset-[0_-14.63%_-28.43%_-14.63%]">
                         <img
                           alt=""
-                          className="block max-w-none size-full"
+                          className="block max-w-none shrink-0"
                           src={imgShadow}
                         />
                       </div>
@@ -1143,12 +1133,12 @@ export default function InfoKunjungan() {
                   >
                     <img
                       alt=""
-                      className="absolute block inset-0 max-w-none size-full"
+                      className="block max-w-none shrink-0"
                       src={imgMargin1}
                     />
                   </div>
                   <div
-                    className="[word-break:break-word] content-stretch flex flex-col items-start leading-[0] pr-[5.11px] relative shrink-0 whitespace-nowrap"
+                    className="[word-break:break-word] content-stretch flex flex-col items-start leading-[0] pr-[5.11px] relative shrink-0 design-text"
                     data-node-id="1:174"
                     data-name="Paragraph"
                   >
@@ -1183,12 +1173,12 @@ export default function InfoKunjungan() {
                   >
                     <img
                       alt=""
-                      className="absolute block inset-0 max-w-none size-full"
+                      className="block max-w-none shrink-0"
                       src={imgMargin2}
                     />
                   </div>
                   <div
-                    className="[word-break:break-word] content-stretch flex flex-col items-start leading-[0] pr-[1.08px] relative shrink-0 whitespace-nowrap"
+                    className="[word-break:break-word] content-stretch flex flex-col items-start leading-[0] pr-[1.08px] relative shrink-0 design-text"
                     data-node-id="1:180"
                     data-name="Paragraph"
                   >
@@ -1234,12 +1224,12 @@ export default function InfoKunjungan() {
                   >
                     <img
                       alt=""
-                      className="absolute block inset-0 max-w-none size-full"
+                      className="block max-w-none shrink-0"
                       src={imgMargin3}
                     />
                   </div>
                   <div
-                    className="[word-break:break-word] content-stretch flex flex-col items-start leading-[0] pr-[19.48px] relative shrink-0 whitespace-nowrap"
+                    className="[word-break:break-word] content-stretch flex flex-col items-start leading-[0] pr-[19.48px] relative shrink-0 design-text"
                     data-node-id="1:186"
                     data-name="Paragraph"
                   >
@@ -1255,10 +1245,10 @@ export default function InfoKunjungan() {
                     >
                       <p className="mb-0">
                         <span className="leading-[16px]">{`Pilih titik penurunan/jemput di `}</span>
-                        <span className="[word-break:break-word] font-['Plus_Jakarta_Sans:SemiBold'] font-semibold leading-[16px] text-[#de3b75]">{`"Lobby Utama Timur`}</span>
+                        <span className="[word-break:break-word] font-['Plus_Jakarta_Sans:SemiBold'] font-semibold leading-[16px] text-[#4b6515]">{`"Lobby Utama Timur`}</span>
                       </p>
                       <p className="mb-0">
-                        <span className="[word-break:break-word] font-['Plus_Jakarta_Sans:SemiBold'] font-semibold leading-[16px] text-[#de3b75]">{`Pasar Oro-Oro Dowo"`}</span>
+                        <span className="[word-break:break-word] font-['Plus_Jakarta_Sans:SemiBold'] font-semibold leading-[16px] text-[#4b6515]">{`Pasar Oro-Oro Dowo"`}</span>
                         <span className="leading-[16px]">{` agar mudah dijangkau`}</span>
                       </p>
                       <p className="leading-[16px]">pengemudi.</p>
@@ -1270,8 +1260,8 @@ export default function InfoKunjungan() {
             <a
               href="https://www.google.com/maps/search/?api=1&query=Pasar+Oro-Oro+Dowo+Malang"
               target="_blank"
-              rel="noreferrer"
-              className="bg-[#de3b75] cursor-pointer drop-shadow-[0px_4px_2px_#c2dc80] relative rounded-[16px] shrink-0 w-full"
+              rel="noopener noreferrer"
+              className="bg-[#fbbf24] drop-shadow-[0px_4px_2px_#c2dc80] relative rounded-[16px] shrink-0 w-full"
               data-node-id="1:189"
               data-name="Link - Navigation Button"
             >
@@ -1288,7 +1278,7 @@ export default function InfoKunjungan() {
                 >
                   <img
                     alt=""
-                    className="absolute block inset-0 max-w-none size-full"
+                    className="block max-w-none shrink-0"
                     src={imgContainer7}
                   />
                 </div>
@@ -1298,7 +1288,7 @@ export default function InfoKunjungan() {
                   data-name="Container"
                 >
                   <div
-                    className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[12px] text-white whitespace-nowrap"
+                    className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[12px] text-white design-text"
                     data-node-id="1:194"
                   >
                     <p className="leading-[16px]">Buka di Google Maps</p>
@@ -1308,12 +1298,12 @@ export default function InfoKunjungan() {
             </a>
           </div>
           <div
-            className="bg-white border border-[#ffe4e6] border-solid content-stretch flex flex-col gap-[12px] items-start p-[17px] relative rounded-[24px] shrink-0 w-full"
+            className="bg-white border border-[#594045] border-solid content-stretch flex flex-col gap-[12px] items-start p-[17px] relative rounded-[24px] shrink-0 w-full min-w-0"
             data-node-id="1:195"
             data-name="Section5_BestTimeToVisit"
           >
             <div
-              className="absolute bg-[rgba(255,255,255,0)] inset-[-1px] rounded-[24px] shadow-[0px_4px_20px_-2px_rgba(222,59,117,0.08),0px_2px_6px_-1px_rgba(0,0,0,0.02)]"
+              className="absolute bg-[rgba(255,255,255,0)] inset-[-1px] rounded-[24px] shadow-[0px_4px_20px_-2px_#594045,0px_2px_6px_-1px_#594045]"
               data-node-id="1:196"
               data-name="Section5_BestTimeToVisit:shadow"
             />
@@ -1324,7 +1314,7 @@ export default function InfoKunjungan() {
             >
               <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[8px] items-center pb-[9px] relative size-full">
                 <div
-                  className="bg-[#fdf2f5] relative rounded-[12px] shrink-0 size-[32px]"
+                  className="bg-[rgba(194,220,128,0.35)] relative rounded-[12px] shrink-0 size-[32px]"
                   data-node-id="1:198"
                   data-name="Background"
                 >
@@ -1336,7 +1326,7 @@ export default function InfoKunjungan() {
                     >
                       <img
                         alt=""
-                        className="absolute block inset-0 max-w-none size-full"
+                        className="block max-w-none shrink-0"
                         src={imgContainer8}
                       />
                     </div>
@@ -1354,7 +1344,7 @@ export default function InfoKunjungan() {
                       data-name="Heading 3"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[14px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[14px] design-text"
                         data-node-id="1:203"
                       >
                         <p className="leading-[20px]">
@@ -1368,7 +1358,7 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[11px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#9ca3af] text-[11px] design-text"
                         data-node-id="1:205"
                       >
                         <p className="leading-[16.5px]">
@@ -1387,7 +1377,7 @@ export default function InfoKunjungan() {
             >
               <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex flex-col gap-[8px] items-start relative size-full">
                 <div
-                  className="bg-gradient-to-r border-[#de3b75] border-b border-l-4 border-r border-solid border-t content-stretch flex flex-col from-[#faf5f8] gap-[2px] items-start pl-[16px] pr-[13px] py-[13px] relative rounded-[16px] shrink-0 to-white w-full"
+                  className="bg-gradient-to-r border-[#4b6515] border-b border-l-4 border-r border-solid border-t content-stretch flex flex-col from-[#faf5f8] gap-[2px] items-start pl-[16px] pr-[13px] py-[13px] relative rounded-[16px] shrink-0 to-white w-full"
                   data-node-id="1:207"
                   data-name="Slot 1"
                 >
@@ -1403,19 +1393,19 @@ export default function InfoKunjungan() {
                         data-name="Container"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#de3b75] text-[10px] uppercase whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[10px] uppercase design-text"
                           data-node-id="1:210"
                         >
                           <p className="leading-[16px]">06.00 - 08.30 WIB</p>
                         </div>
                       </div>
                       <div
-                        className="bg-[rgba(222,59,117,0.1)] content-stretch flex flex-col items-start px-[8px] py-[2px] relative rounded-[9999px] shrink-0"
+                        className="bg-[#c2dc80] content-stretch flex flex-col items-start px-[8px] py-[2px] relative rounded-[9999px] shrink-0"
                         data-node-id="1:211"
                         data-name="Overlay"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#c22860] text-[10px] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[10px] design-text"
                           data-node-id="1:212"
                         >
                           <p className="leading-[16px]">Bahan Pokok Segar</p>
@@ -1477,7 +1467,7 @@ export default function InfoKunjungan() {
                         data-name="Container"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#b45309] text-[10px] uppercase whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#b45309] text-[10px] uppercase design-text"
                           data-node-id="1:220"
                         >
                           <p className="leading-[16px]">08.30 - 11.00 WIB</p>
@@ -1489,7 +1479,7 @@ export default function InfoKunjungan() {
                         data-name="Background"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#92400e] text-[10px] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#92400e] text-[10px] design-text"
                           data-node-id="1:222"
                         >
                           <p className="leading-[16px]">Wisata Kuliner</p>
@@ -1549,7 +1539,7 @@ export default function InfoKunjungan() {
                         data-name="Container"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[10px] uppercase whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[10px] uppercase design-text"
                           data-node-id="1:230"
                         >
                           <p className="leading-[16px]">14.00 - 16.00 WIB</p>
@@ -1561,7 +1551,7 @@ export default function InfoKunjungan() {
                         data-name="Background"
                       >
                         <div
-                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[10px] whitespace-nowrap"
+                          className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#4b6515] text-[10px] design-text"
                           data-node-id="1:232"
                         >
                           <p className="leading-[16px]">{`Lengang & Cepat`}</p>
@@ -1606,13 +1596,13 @@ export default function InfoKunjungan() {
               </div>
             </div>
             <div
-              className="bg-[#fdf2f5] border border-[rgba(222,59,117,0.2)] border-solid relative rounded-[16px] shrink-0 w-full"
+              className="bg-[rgba(251,191,36,0.35)] border border-[#594045] border-solid relative rounded-[16px] shrink-0 w-full"
               data-node-id="1:237"
               data-name="Local Tip Card"
             >
               <div className="bg-clip-padding border-0 border-[transparent] border-solid content-stretch flex gap-[12px] items-center p-[13px] relative size-full">
                 <div
-                  className="bg-[#de3b75] relative rounded-[12px] shrink-0 size-[36px]"
+                  className="bg-[#c2dc80] relative rounded-[12px] shrink-0 size-[36px]"
                   data-node-id="1:238"
                   data-name="Background"
                 >
@@ -1624,7 +1614,7 @@ export default function InfoKunjungan() {
                     >
                       <img
                         alt=""
-                        className="absolute block inset-0 max-w-none size-full"
+                        className="block max-w-none shrink-0"
                         src={imgContainer9}
                       />
                     </div>
@@ -1642,7 +1632,7 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[12px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Bold'] font-bold justify-center leading-[0] relative shrink-0 text-[#111827] text-[12px] design-text"
                         data-node-id="1:243"
                       >
                         <p className="leading-[16px]">Tips Ramah Lingkungan</p>
@@ -1654,12 +1644,12 @@ export default function InfoKunjungan() {
                       data-name="Container"
                     >
                       <div
-                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#4b5563] text-[11px] whitespace-nowrap"
+                        className="[word-break:break-word] flex flex-col font-['Plus_Jakarta_Sans:Regular'] font-normal justify-center leading-[0] relative shrink-0 text-[#4b5563] text-[11px] design-text"
                         data-node-id="1:245"
                       >
                         <p className="mb-0">
                           <span className="leading-[16.5px]">{`Bawa `}</span>
-                          <span className="[word-break:break-word] font-['Plus_Jakarta_Sans:SemiBold'] font-semibold leading-[16.5px] text-[#de3b75]">
+                          <span className="[word-break:break-word] font-['Plus_Jakarta_Sans:SemiBold'] font-semibold leading-[16.5px] text-[#4b6515]">
                             kantong belanja kain (totebag)
                           </span>
                           <span className="leading-[16.5px]">{` sendiri`}</span>
@@ -1677,146 +1667,24 @@ export default function InfoKunjungan() {
           </div>
         </div>
       </div>
-      <div
-        className="backdrop-blur-[6px] bg-[rgba(255,255,255,0.95)] border border-[rgba(234,156,175,0.3)] border-solid content-stretch flex gap-[53px] items-center px-[25px] py-[11px] relative rounded-[9999px] shadow-[0px_-4px_25px_0px_rgba(213,105,137,0.08)] shrink-0"
-        data-node-id="1:246"
-        data-name="Background+Border+Shadow+OverlayBlur"
-      >
-        <Link
-          to="/home"
-          className="content-stretch flex flex-col items-center relative shrink-0"
-          data-node-id="1:247"
-          data-name="Link - Tab 1: Home (Active)"
-        >
-          <div
-            className="bg-[rgba(234,156,175,0.25)] content-stretch flex items-center justify-center relative rounded-[9999px] shrink-0 size-[32px]"
-            data-node-id="1:248"
-            data-name="Overlay"
-          >
-            <div
-              className="relative shrink-0 size-[16px]"
-              data-node-id="1:249"
-              data-name="SVG"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgSvg}
-              />
-            </div>
-          </div>
-          <div
-            className="content-stretch flex flex-col items-start pt-[2px] relative shrink-0"
-            data-node-id="1:252"
-            data-name="Margin"
-          >
-            <div
-              className="[word-break:break-word] flex flex-col font-['Inter:Bold'] font-bold justify-center leading-[0] not-italic relative shrink-0 text-[#d56989] text-[9.5px] whitespace-nowrap"
-              data-node-id="1:253"
-            >
-              <p className="leading-[14.25px]">Home</p>
-            </div>
-          </div>
-        </Link>
-        <Link
-          to="/toko"
-          className="content-stretch flex flex-col items-center relative shrink-0"
-          data-node-id="1:254"
-          data-name="Link - Tab 2: Toko"
-        >
-          <div
-            className="content-stretch flex items-center justify-center relative shrink-0 size-[32px]"
-            data-node-id="1:255"
-            data-name="Container"
-          >
-            <div
-              className="relative shrink-0 size-[20px]"
-              data-node-id="1:256"
-              data-name="SVG"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgSvg1}
-              />
-            </div>
-          </div>
-          <div
-            className="content-stretch flex flex-col items-start pt-[2px] relative shrink-0"
-            data-node-id="1:260"
-            data-name="Margin"
-          >
-            <div
-              className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#9ca3af] text-[9.5px] whitespace-nowrap"
-              data-node-id="1:261"
-            >
-              <p className="leading-[14.25px]">Toko</p>
-            </div>
-          </div>
-        </Link>
-        <Link
-          to="/promo"
-          className="content-stretch flex flex-col isolate items-center relative shrink-0"
-          data-node-id="1:262"
-          data-name="Link - Tab 3: Keranjang"
-        >
-          <div
-            className="content-stretch flex items-center justify-center relative shrink-0 size-[32px] z-[2]"
-            data-node-id="1:263"
-            data-name="Container"
-          >
-            <IconHeroiconsOutlineFire className="relative shrink-0 size-[23px]" />
-          </div>
-          <div
-            className="content-stretch flex flex-col items-start pt-[2px] relative shrink-0 z-[1]"
-            data-node-id="1:265"
-            data-name="Margin"
-          >
-            <div
-              className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#9ca3af] text-[9.5px] whitespace-nowrap"
-              data-node-id="1:266"
-            >
-              <p className="leading-[14.25px]">Promo</p>
-            </div>
-          </div>
-        </Link>
-        <Link
-          to="/review-pasar"
-          className="content-stretch flex flex-col gap-[2px] items-center justify-center relative shrink-0"
-          data-node-id="1:267"
-          data-name="Button - Nav Item 4: Profil"
-        >
-          <div
-            className="content-stretch flex flex-col items-start p-[4px] relative shrink-0"
-            data-node-id="1:268"
-            data-name="Container"
-          >
-            <div
-              className="relative shrink-0 size-[20px]"
-              data-node-id="1:269"
-              data-name="SVG"
-            >
-              <img
-                alt=""
-                className="absolute block inset-0 max-w-none size-full"
-                src={imgSvg2}
-              />
-            </div>
-          </div>
-          <div
-            className="content-stretch flex flex-col items-center relative shrink-0"
-            data-node-id="1:271"
-            data-name="Container"
-          >
-            <div
-              className="[word-break:break-word] flex flex-col font-['Inter:Regular'] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#94a3b8] text-[10px] text-center whitespace-nowrap"
-              data-node-id="1:272"
-            >
-              <p className="leading-[15px]">Review Pasar</p>
-            </div>
-          </div>
-        </Link>
-      </div>
+      <nav className="visit-nav bottom-nav" aria-label="Navigasi utama">
+        <button type="button" className="active" onClick={() => navigate("/home")}>
+          <span><img src={`${assetPathPrefix}/dfd0c.svg`} alt="" /></span>
+          <b>Home</b>
+        </button>
+        <button type="button" onClick={() => navigate("/toko")}>
+          <span><img src={`${assetPathPrefix}/2781e.svg`} alt="" /></span>
+          <b>Toko</b>
+        </button>
+        <button type="button" onClick={() => navigate("/promo")}>
+          <span><img src={imgIconHeroiconsOutlineFire} alt="" /></span>
+          <b>Promo</b>
+        </button>
+        <button type="button" className="review-tab" onClick={() => navigate("/review-pasar")}>
+          <span><img src={imgSvg2} alt="" /></span>
+          <b>Review Pasar</b>
+        </button>
+      </nav>
     </div>
   )
 }

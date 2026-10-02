@@ -59,14 +59,14 @@ button {
   min-height: 100dvh;
   margin: 0 auto;
   overflow-x: clip;
-  background: #f3eef1;
+  background: #f0f6df;
   border-inline: 1px solid rgba(234, 156, 175, 0.2);
   box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
 }
 
 .mobile-page:has(.market-summary-card) {
   border-inline-color: rgba(194, 220, 128, 0.35);
-  background: #f6f7f0;
+  background: #f0f6df;
   font-family: "Inter:Bold", Inter, sans-serif;
   font-weight: 600;
 }
@@ -88,7 +88,7 @@ button {
 }
 
 .mobile-page:has(.market-summary-card) .top-header {
-  background: #f6f7f0;
+  background: #f0f6df;
 }
 
 .brand-row {
@@ -99,12 +99,12 @@ button {
 
 .brand-logo {
   display: grid;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   place-items: center;
-  border-radius: 16px;
-  background: linear-gradient(45deg, #d56989, #ea9caf);
-  box-shadow: 0 4px 2px #c2dc80, 0 4px 6px rgba(213, 105, 137, 0.25);
+  border-radius: 17px;
+  background: linear-gradient(45deg, #fbbf24, #c2dc80);
+  box-shadow: 0 4px 7px rgba(75, 101, 21, 0.2);
 }
 
 .brand-logo img {
@@ -113,8 +113,8 @@ button {
 }
 
 .mobile-page:has(.market-summary-card) .brand-logo {
-  background: linear-gradient(45deg, #c2dc80, #fbbf24);
-  box-shadow: 0 4px 2px #c2dc80, 0 4px 6px rgba(75, 101, 21, 0.25);
+  background: linear-gradient(45deg, #fbbf24, #c2dc80);
+  box-shadow: 0 4px 7px rgba(75, 101, 21, 0.2);
 }
 
 .brand-row h1 {
@@ -126,6 +126,10 @@ button {
 
 .mobile-page:has(.market-summary-card) .brand-row h1 {
   color: #594045;
+}
+
+.mobile-page:has(.market-summary-card) .brand-row {
+  gap: 12px;
 }
 
 .review-page-heading {

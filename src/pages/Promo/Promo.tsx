@@ -5,9 +5,12 @@ import {
 	CheckCircle2,
 	Clock3,
 	Info,
+	MapPin,
 	Megaphone,
 	Search,
 	Sparkles,
+	Hourglass,
+	Store,
 } from 'lucide-react';
 import './Promo.css';
 
@@ -24,7 +27,7 @@ type PromoItem = {
 	isWeekend?: boolean;
 };
 
-type PromoFilter = 'all' | 'ongoing' | 'weekend';
+type PromoFilter = 'all' | 'ongoing' | 'weekend' | 'upcoming';
 
 const promoList: PromoItem[] = [
 	{
@@ -91,17 +94,42 @@ const filterOptions: { id: PromoFilter; label: string }[] = [
 	{ id: 'all', label: 'Semua Jadwal' },
 	{ id: 'ongoing', label: 'Sedang Berlangsung' },
 	{ id: 'weekend', label: 'Akhir Pekan' },
+	{ id: 'upcoming', label: 'Akan Datang' },
 ];
 
 function PromoCard({ promo }: { promo: PromoItem }) {
+	const isUpcoming = promo.status === 'Akan Datang';
+	const isWeekend = promo.isWeekend;
+	const isMarketDay = !promo.isOngoing && !isUpcoming && !isWeekend;
+	const StatusIcon = isUpcoming || isMarketDay
+		? Clock3
+		: isWeekend
+			? CalendarDays
+			: CheckCircle2;
+	const NoteIcon = isUpcoming
+		? Hourglass
+		: promo.isOngoing
+			? Store
+			: isWeekend
+				? MapPin
+				: Clock3;
+
 	return (
 		<article className="promo-card">
-			<div className="promo-image-wrap">
+			<div
+				className={`promo-image-wrap${isUpcoming ? ' upcoming' : ''}${isWeekend ? ' weekend' : ''}${isMarketDay ? ' market-day' : ''}`}
+			>
 				<img className="promo-image" src={promo.image} alt={promo.title} />
-				<span className={`promo-status${promo.isOngoing ? ' ongoing' : ''}`}>
+				<span className={`promo-status${promo.isOngoing ? ' ongoing' : ''}${isUpcoming ? ' upcoming' : ''}${isMarketDay ? ' market-day' : ''}`}>
+					<StatusIcon aria-hidden="true" />
 					{promo.status}
 				</span>
-				{promo.imageNote && <span className="promo-image-note">{promo.imageNote}</span>}
+				{promo.imageNote && (
+					<span className="promo-image-note">
+						<NoteIcon aria-hidden="true" />
+						{promo.imageNote}
+					</span>
+				)}
 			</div>
 
 			<div className="promo-card-content">
@@ -113,7 +141,7 @@ function PromoCard({ promo }: { promo: PromoItem }) {
 						const DetailIcon = detail.icon === 'calendar' ? CalendarDays : Clock3;
 						return (
 							<div className="promo-detail-row" key={detail.label}>
-								<DetailIcon aria-hidden="true" />
+								<DetailIcon className={`promo-detail-icon promo-detail-icon-${detail.icon}`} aria-hidden="true" />
 								<span className="promo-detail-label">{detail.label}:</span>
 								<span className="promo-detail-value">{detail.value}</span>
 							</div>
@@ -145,7 +173,8 @@ export default function Promo() {
 		const matchesFilter =
 			activeFilter === 'all' ||
 			(activeFilter === 'ongoing' && promo.isOngoing) ||
-			(activeFilter === 'weekend' && promo.isWeekend);
+			(activeFilter === 'weekend' && promo.isWeekend) ||
+			(activeFilter === 'upcoming' && promo.status === 'Akan Datang');
 
 		return matchesSearch && matchesFilter;
 	});
@@ -161,11 +190,11 @@ export default function Promo() {
 		<div className="promo-page-shell">
 			<main className="promo-page">
 				<header className="promo-top-header">
-					<div className="promo-brand-header">
-						<span className="promo-brand-mark">
+					<div className="promo-brand-header brand-row">
+						<div className="promo-brand-mark brand-logo">
 							<img src="/assets/c03df.svg" alt="" />
-						</span>
-						<span>Pasar Oro-Oro Dowo</span>
+						</div>
+						<h1>Pasar Oro-Oro Dowo</h1>
 					</div>
 
 					<section className="promo-intro" aria-labelledby="promo-page-title">
@@ -254,7 +283,7 @@ export default function Promo() {
 							<h2 id="important-info-title">Informasi Penting</h2>
 							<p>
 								Seluruh promo pada halaman ini berlaku otomatis saat bertransaksi
-								langsung di kasir pedagang selama periode aktif tercantum. Anda
+								langsung di kasir kios pedagang selama periode aktif yang tercantum. Anda
 								tidak perlu mengklaim voucher maupun menukarkan kupon apa pun.
 							</p>
 						</div>

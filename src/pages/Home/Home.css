@@ -9,7 +9,7 @@ body { margin: 0; min-width: 320px; min-height: 100dvh; }
 button, input { font: inherit; }
 button { cursor: pointer; }
 .app-shell { min-height: 100dvh; background: #f3eef1; }
-.mobile-page { position: relative; width: min(100%, 402px); min-height: 100dvh; margin: 0 auto; overflow-x: clip; background: #f3eef1; border-inline: 1px solid rgba(234,156,175,.2); box-shadow: 0 25px 25px rgba(0,0,0,.25); }
+.mobile-page { position: relative; width: min(100%, 402px); min-height: 100dvh; margin: 0 auto; overflow-x: clip; background: #f0f6df; border-inline: 1px solid rgba(234,156,175,.2); box-shadow: 0 25px 25px rgba(0,0,0,.25); }
 .top-header { position: sticky; z-index: 30; top: 0; display: flex; flex-direction: column; gap: 12px; padding: 16px 20px 8px; background: rgba(243,238,241,.95); backdrop-filter: blur(6px); }
 .brand-row { display: flex; align-items: center; gap: 8px; }
 .brand-logo { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 16px; background: linear-gradient(45deg,#d56989,#ea9caf); box-shadow: 0 4px 2px #c2dc80,0 4px 6px rgba(213,105,137,.25); }
@@ -125,29 +125,35 @@ button:active { transform: translateY(1px); }
 	--home-yellow: #fbbf24;
 	--home-olive: #4b6515;
 	--home-brown: #594045;
-	background: #f6f7f0;
+	background: #f3eef1;
 }
 
 .app-shell .mobile-page {
-	background: transparent;
+	background: #f0f6df;
 	border-inline-color: rgba(75, 101, 21, 0.2);
 	box-shadow: 0 18px 32px rgba(89, 64, 69, 0.12);
 }
 
 .app-shell .top-header {
-	background: #f6f7f0;
+	background: #f0f6df;
 }
 
 .app-shell .brand-logo {
-	border-radius: 50%;
-	background: linear-gradient(45deg, var(--home-green), var(--home-yellow));
-	box-shadow: 0 4px 2px var(--home-green), 0 4px 6px rgba(75, 101, 21, 0.25);
+	width: 40px;
+	height: 40px;
+	border-radius: 17px;
+	background: linear-gradient(45deg, var(--home-yellow), var(--home-green));
+	box-shadow: 0 4px 7px rgba(75, 101, 21, 0.2);
 }
 
 .app-shell .brand-logo img {
 	width: 20px;
 	height: 20px;
-	filter: brightness(0) saturate(100%) invert(30%) sepia(26%) saturate(1180%) hue-rotate(37deg) brightness(91%) contrast(90%);
+	filter: brightness(0) invert(1);
+}
+
+.app-shell .brand-row {
+	gap: 12px;
 }
 
 .app-shell .brand-row h1,

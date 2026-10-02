@@ -202,7 +202,6 @@ export default function Toko() {
           <section className="toko-category-section">
             <div className="toko-section-header">
               <h2>Kategori Belanja</h2>
-              <img src={asset('d28fc.svg')} alt="" className="chevron-icon" />
             </div>
 
             {/* SINGLE LARGE WHITE CARD CONTAINER FOR CATEGORIES */}
