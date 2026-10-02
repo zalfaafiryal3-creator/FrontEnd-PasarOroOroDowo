@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import groupLogo from '../../assets/Group.png';
 import './LandingPage.css';
 
+const groupLogo = '/assets/logo%20oro%20hijau.png';
 const marketPhoto = '/assets/204f2.png';
 
 function LocationIcon() {

@@ -6,9 +6,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f3eef1;
-  border-inline: 1px solid rgba(213, 105, 137, 0.2);
-  box-shadow: 0 0 28px rgba(45, 35, 40, 0.16);
+  background: rgba(194, 220, 128, 0.25);
+  border-inline: 1px solid rgba(75, 101, 21, 0.18);
+  box-shadow: 0 0 28px rgba(75, 101, 21, 0.16);
 }
 
 .splash-logo {
@@ -16,7 +16,7 @@
   height: auto;
   view-transition-name: market-logo;
   animation: splash-logo-in 1.2s ease-in-out both;
-  filter: drop-shadow(0 8px 14px rgba(194, 220, 128, 0.7));
+  filter: drop-shadow(0 3px 2px #fbbf24);
 }
 
 .brand-group-logo {
@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e7e1e4;
+  background: rgba(194, 220, 128, 0.25);
   padding: 0;
 }
 
@@ -69,20 +69,20 @@
   width: min(100%, 402px);
   min-height: 100vh;
   font-family: "Inter:Regular", Inter, sans-serif;
-  background: #f3eef1;
+  background: transparent;
   display: flex;
   flex-direction: column;
-  padding: 0 15px 28px;
-  border-inline: 1px solid rgba(213, 105, 137, 0.2);
-  box-shadow: 0 0 28px rgba(45, 35, 40, 0.16);
+  padding: 0 24px 28px;
+  border-inline: 1px solid rgba(75, 101, 21, 0.18);
+  box-shadow: 0 0 28px rgba(89, 64, 69, 0.16);
 }
 
 .brand-panel {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 26px 12px 10px;
-  background: #f3eef1;
+  padding: 30px 12px 14px;
+  background: transparent;
 }
 
 .brand-illustration {
@@ -93,17 +93,20 @@
 }
 
 .brand-group-logo {
-  width: min(100%, 300px);
-  height: auto;
+  width: min(100%, 200px);
+  height: 50px;
   display: block;
+  object-fit: cover;
+  object-position: center 40%;
 }
 
 .content-panel {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  flex: 1;
+  justify-content: flex-start;
   padding: 0;
-  background: #f3eef1;
+  background: transparent;
 }
 
 .intro-header {
@@ -123,7 +126,7 @@
 
 .intro-header h1 {
   margin: 0;
-  color: #d56989;
+  color: #594045;
   font-family: "Inter:Bold", Inter, sans-serif;
   font-size: clamp(1.5rem, 5.2vw, 1.9rem);
   font-weight: 700;
@@ -133,7 +136,7 @@
 
 .intro-header p {
   margin: 8px 0 0;
-  color: #5b7b4b;
+  color: #594045;
   font-size: 0.8rem;
   font-weight: 500;
   line-height: 1.4;
@@ -141,6 +144,7 @@
 
 .welcome-section {
   margin-top: 22px;
+  margin-inline: 8px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -149,7 +153,7 @@
 
 .welcome-section h2 {
   margin: 0;
-  color: #5b7b4b;
+  color: #4b6515;
   font-family: "Inter:Bold", Inter, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
@@ -161,17 +165,18 @@
   width: 54px;
   height: 4px;
   border-radius: 999px;
-  background: #d56989;
-  box-shadow: 0 2px 0 rgba(234, 156, 175, 0.6);
+  background: #fbbf24;
+  box-shadow: 0 2px 0 rgba(251, 191, 36, 0.4);
 }
 
 .history-section {
   margin-top: 12px;
+  margin-inline: 8px;
 }
 
 .history-section h3 {
   margin: 0;
-  color: #d56989;
+  color: #594045;
   font-family: "Inter:Bold", Inter, sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
@@ -180,18 +185,19 @@
 
 .history-section p {
   margin: 12px 0 0;
-  color: #4f5d42;
+  color: #4b6515;
   font-size: 0.86rem;
-  line-height: 1.55;
+  line-height: 1.45;
+  padding-left: 4px;
 }
 
 .info-card {
   position: relative;
   margin-top: 18px;
-  padding: 18px 16px 14px;
-  border-radius: 20px;
-  background: #c2dc80;
-  box-shadow: 0 8px 0 rgba(234, 156, 175, 0.35);
+  padding: 20px 22px 18px;
+  border-radius: 14px;
+  background: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 5px 3px rgba(89, 64, 69, 0.6);
   overflow: hidden;
 }
 
@@ -220,7 +226,7 @@
 .info-icon {
   width: 18px;
   height: 18px;
-  fill: #d56989;
+  fill: #4b6515;
 }
 
 .info-copy {
@@ -228,7 +234,7 @@
 }
 
 .info-label {
-  color: #d56989;
+  color: #4b6515;
   font-family: "Inter:Bold", Inter, sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
@@ -237,18 +243,18 @@
 
 .info-value {
   margin-top: 2px;
-  color: #4f5d42;
+  color: #594045;
   font-size: 0.7rem;
   line-height: 1.6;
 }
 
 .market-photo {
-  margin: 18px 0 0;
+  margin: 24px 0 0;
   width: 100%;
   height: 132px;
-  border-radius: 18px;
+  border-radius: 14px;
   overflow: hidden;
-  background: #e7e2e3;
+  background: transparent;
 }
 
 .market-photo img {
@@ -267,8 +273,8 @@
   margin-top: 24px;
   border: none;
   border-radius: 30px;
-  background: #d56989;
-  box-shadow: 0 6px 0 #c2dc80;
+  background: #fbbf24;
+  box-shadow: 0 5px 0 rgba(194, 220, 128, 0.8);
   color: #ffffff;
   font-family: "Inter:Bold", Inter, sans-serif;
   font-size: 1rem;
@@ -277,17 +283,17 @@
 }
 
 .next-button:hover {
-  background: #c95a81;
+  background: #fbbf24;
   transform: translateY(-2px);
 }
 
 .next-button:active {
   transform: translateY(4px);
-  box-shadow: 0 2px 0 #c2dc80;
+  box-shadow: 0 2px 0 rgba(194, 220, 128, 0.8);
 }
 
 .next-button:focus-visible {
-  outline: 3px solid rgba(213, 105, 137, 0.35);
+  outline: 3px solid rgba(251, 191, 36, 0.65);
   outline-offset: 3px;
 }
 
@@ -300,7 +306,7 @@
 .mobile-indicator {
   width: 42px;
   height: 4px;
-  margin: 28px auto 0;
+  margin: auto auto 0;
   border-radius: 999px;
-  background: rgba(17, 24, 39, 0.14);
+  background: rgba(89, 64, 69, 0.18);
 }

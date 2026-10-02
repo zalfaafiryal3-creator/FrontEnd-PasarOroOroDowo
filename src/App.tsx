@@ -11,7 +11,7 @@ import DetailToko from './pages/DetailToko/DetailToko';
 import ReviewPasar from './pages/ReviewPasar/ReviewPasar';
 import TulisUlasanPasar from './pages/TulisUlasanPasar/TulisUlasanPasar';
 
-const splashLogo = '/assets/Logo%20Oro.png';
+const splashLogo = '/assets/logo%20oro%20hijau.png';
 
 function SplashScreen() {
   const navigate = useNavigate();

@@ -119,3 +119,235 @@ button { cursor: pointer; }
 button:focus-visible,input:focus-visible { outline: 2px solid #d56989; outline-offset: 2px; }
 button:active { transform: translateY(1px); }
 @media (max-width: 360px) { .brand-row h1 { font-size: 18px; } .page-content { padding-inline: 12px; } .hero { padding: 17px; } .hero-bag { width: 82px; } .feature-grid { padding-inline: 8px; } .market-card { padding: 13px; } .market-title h2 { font-size: 14px; } .stat-item { gap: 4px; padding-inline: 4px; } .stat-icon { width: 21px; height: 21px; } .bottom-nav { right: 12px; left: 12px; padding-inline: 18px; } }
+
+#root .app-shell {
+	--home-green: #c2dc80;
+	--home-yellow: #fbbf24;
+	--home-olive: #4b6515;
+	--home-brown: #594045;
+	background: #f6f7f0;
+}
+
+.app-shell .mobile-page {
+	background: transparent;
+	border-inline-color: rgba(75, 101, 21, 0.2);
+	box-shadow: 0 18px 32px rgba(89, 64, 69, 0.12);
+}
+
+.app-shell .top-header {
+	background: #f6f7f0;
+}
+
+.app-shell .brand-logo {
+	border-radius: 50%;
+	background: linear-gradient(45deg, var(--home-green), var(--home-yellow));
+	box-shadow: 0 4px 2px var(--home-green), 0 4px 6px rgba(75, 101, 21, 0.25);
+}
+
+.app-shell .brand-logo img {
+	width: 20px;
+	height: 20px;
+	filter: brightness(0) saturate(100%) invert(30%) sepia(26%) saturate(1180%) hue-rotate(37deg) brightness(91%) contrast(90%);
+}
+
+.app-shell .brand-row h1,
+.app-shell .section-header h2,
+.app-shell .market-title h2,
+.app-shell .store-details h3,
+.app-shell .visit-title h2 {
+	color: var(--home-brown);
+}
+
+.app-shell .search-box {
+	border-color: rgba(75, 101, 21, 0.28);
+}
+
+.app-shell .hero {
+	background: linear-gradient(115deg, var(--home-green) 0%, rgba(194, 220, 128, 0.82) 55%, var(--home-yellow) 100%);
+}
+
+.app-shell .hero-glow-left {
+	background: rgba(255, 255, 255, 0.15);
+}
+
+.app-shell .hero-glow-right {
+	background: rgba(194, 220, 128, 0.24);
+}
+
+.app-shell .hero-copy button,
+.app-shell .visit-copy button {
+	color: var(--home-brown);
+	box-shadow: 0 3px 6px rgba(75, 101, 21, 0.22);
+}
+
+.app-shell .hero-copy button {
+	color: var(--home-yellow);
+}
+
+.app-shell .hero-copy button img,
+.app-shell .visit-copy button img,
+.app-shell .see-all img,
+.app-shell .market-title button img {
+	filter: hue-rotate(95deg) saturate(0.8);
+}
+
+.app-shell .carousel-dots i {
+	background: rgba(75, 101, 21, 0.28);
+}
+
+.app-shell .carousel-dots i.active {
+	background: var(--home-yellow);
+}
+
+.app-shell .market-card,
+.app-shell .feature-grid,
+.app-shell .store-card {
+	border-color: rgba(75, 101, 21, 0.28);
+}
+
+.app-shell .market-photo,
+.app-shell .store-photo {
+	background: rgba(194, 220, 128, 0.25);
+}
+
+.app-shell .market-photo {
+	width: auto;
+	height: 105px;
+	margin: 0;
+}
+
+.app-shell .market-title button.is-favorite {
+	background: rgba(251, 191, 36, 0.24);
+}
+
+.app-shell .market-copy h3 {
+	color: var(--home-yellow);
+}
+
+.app-shell .market-copy > p {
+	color: rgba(89, 64, 69, 0.82);
+}
+
+.app-shell .market-stats {
+	border-top-color: rgba(75, 101, 21, 0.14);
+	background: rgba(194, 220, 128, 0.22);
+}
+
+.app-shell .stat-item + .stat-item {
+	border-left-color: rgba(75, 101, 21, 0.14);
+}
+
+.app-shell .stat-icon {
+	background: rgba(194, 220, 128, 0.48);
+}
+
+.app-shell .stat-item small,
+.app-shell .stat-item em,
+.app-shell .store-category,
+.app-shell .store-meta {
+	color: rgba(89, 64, 69, 0.66);
+}
+
+.app-shell .stat-item strong,
+.app-shell .location-stat strong {
+	color: var(--home-brown);
+}
+
+.app-shell .feature-icon.pink {
+	background: rgba(251, 191, 36, 0.24);
+}
+
+.app-shell .feature-icon.green {
+	background: rgba(194, 220, 128, 0.32);
+}
+
+.app-shell .feature-icon.pink img,
+.app-shell .category-card.pink img,
+.app-shell .category-card.plain img {
+	filter: hue-rotate(95deg) saturate(0.8);
+}
+
+.app-shell .feature-grid b,
+.app-shell .category-card b {
+	color: var(--home-brown);
+}
+
+.app-shell .see-all {
+	color: var(--home-brown);
+}
+
+.app-shell .category-card.pink,
+.app-shell .category-card.plain {
+	border-color: rgba(89, 64, 69, 0.34);
+}
+
+.app-shell .category-card.green {
+	border-color: rgba(194, 220, 128, 0.82);
+}
+
+.app-shell .category-card.pink > span {
+	background: rgba(251, 191, 36, 0.24);
+}
+
+.app-shell .category-card.green > span {
+	background: rgba(194, 220, 128, 0.38);
+}
+
+.app-shell .category-card.plain > span {
+	background: rgba(194, 220, 128, 0.2);
+}
+
+.app-shell .store-photo > span {
+	background: var(--home-olive);
+}
+
+.app-shell .store-meta strong {
+	color: var(--home-yellow);
+}
+
+.app-shell .store-button {
+	background: var(--home-yellow);
+	color: var(--home-brown);
+	box-shadow: 0 3px 5px rgba(194, 220, 128, 0.8);
+}
+
+.app-shell .visit-card {
+	border-color: rgba(194, 220, 128, 0.9);
+	background: linear-gradient(110deg, rgba(194, 220, 128, 0.24), rgba(255, 255, 255, 0.94));
+	box-shadow: 0 5px 12px rgba(89, 64, 69, 0.12);
+}
+
+.app-shell .visit-title > span {
+	background: rgba(194, 220, 128, 0.42);
+}
+
+.app-shell .visit-copy p {
+	color: rgba(89, 64, 69, 0.82);
+}
+
+.app-shell .visit-copy button {
+	border-color: rgba(194, 220, 128, 0.9);
+	box-shadow: 0 3px 3px rgba(75, 101, 21, 0.38);
+}
+
+.app-shell .bottom-nav {
+	border-color: rgba(194, 220, 128, 0.78);
+	box-shadow: 0 -4px 22px rgba(75, 101, 21, 0.1);
+}
+
+.app-shell .bottom-nav button.active > span {
+	background: rgba(194, 220, 128, 0.45);
+}
+
+.app-shell .bottom-nav button.active > span img {
+	filter: brightness(0) saturate(100%) invert(30%) sepia(26%) saturate(1180%) hue-rotate(37deg) brightness(91%) contrast(90%);
+}
+
+.app-shell .bottom-nav button.active b {
+	color: var(--home-olive);
+}
+
+.app-shell button:focus-visible,
+.app-shell input:focus-visible {
+	outline-color: var(--home-yellow);
+}
