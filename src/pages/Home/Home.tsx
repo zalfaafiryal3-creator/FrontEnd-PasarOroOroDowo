@@ -73,6 +73,7 @@ export default function Home() {
 
   const handleFeatureClick = (label: string) => {
     if (label === "Denah\nPasar") navigate('/denah');
+    if (label === "Chatbot\nRekomendasi") navigate('/chatbot-rekomendasi');
     if (label === "Fasilitas") navigate('/fasilitas-pasar');
     if (label === "Rekomendasi") navigate('/rekomendasi');
     if (label === "Info\nKunjungan") navigate('/info-kunjungan');
