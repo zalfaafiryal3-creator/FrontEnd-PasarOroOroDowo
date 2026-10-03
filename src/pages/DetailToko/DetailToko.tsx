@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const asset = (name: string) => `/assets/${name}`;
 
@@ -40,6 +41,7 @@ function Stars({ small = false }: { small?: boolean }) {
 }
 
 export default function App() {
+  const navigate = useNavigate();
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [reviewOpen, setReviewOpen] = useState(false);
@@ -59,7 +61,7 @@ export default function App() {
       <div className="relative mx-auto min-h-dvh w-full max-w-[402px] overflow-x-clip border-x border-[#ea9caf]/20 bg-[#f0f6df] pb-4 text-[#111c2d] shadow-[0_25px_25px_rgba(0,0,0,0.25)] pj-regular">
       <header id="home" className="h-16 w-full backdrop-blur-xl">
         <div className="mx-auto flex h-full max-w-[1100px] items-center px-4">
-          <button className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm" aria-label="Kembali" onClick={() => window.history.length > 1 ? window.history.back() : window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <button className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm" aria-label="Kembali ke Home" onClick={() => navigate('/home')}>
             <Icon file="ab505.svg" />
           </button>
           <div className="min-w-0 flex-1 text-center leading-none">
@@ -72,7 +74,7 @@ export default function App() {
         </div>
       </header>
 
-      <main id="toko" className="mx-auto w-full px-[22px] pt-2">
+      <main id="toko" className="mx-auto w-full px-[22px] pb-20 pt-2">
         <section className="overflow-hidden rounded-2xl bg-white shadow-[0_1px_2px_#594045]">
           <div className="relative h-48 overflow-hidden bg-[#d8e3fb]">
             <img src={asset("4110b.png")} alt="" className="absolute inset-0 h-[101.61%] w-full" />
@@ -192,17 +194,17 @@ export default function App() {
         </section>
       </main>
 
-      <nav aria-label="Navigasi utama" className="sticky bottom-2 z-20 mx-auto mt-4 flex w-fit max-w-[calc(100%-24px)] items-center justify-around gap-[53px] rounded-full border border-[#c2dc80] bg-white/95 px-[25px] py-[11px] shadow-[0_-4px_25px_rgba(213,105,137,0.08)] backdrop-blur-md max-[400px]:gap-[clamp(12px,5vw,20px)]">
+      <nav aria-label="Navigasi utama" className="fixed bottom-3 left-1/2 z-30 flex h-[71px] w-[calc(100%-30px)] max-w-[372px] -translate-x-1/2 items-center justify-between rounded-full border border-[#c2dc80] bg-white/95 px-5 shadow-[0_-4px_22px_rgba(89,64,69,0.14)] backdrop-blur-md">
         {[
-          ["Home", "d27ed.svg", "#home"],
-          ["Toko", "6e3e3.svg", "#toko"],
-          ["Promo", "", "#promo"],
-          ["Review Pasar", "3de6e.svg", "#ulasan"],
+          ["Home", "dfd0c.svg", "/home"],
+          ["Toko", "2781e.svg", "/toko"],
+          ["Promo", "75326.svg", "/promo"],
+          ["Review Pasar", "3de6e.svg", "/review-pasar"],
         ].map(([label, icon, href]) => (
-          <a key={label} href={href} className="flex shrink-0 flex-col items-center text-[#9ca3af]">
-            <span className={`flex size-8 items-center justify-center rounded-full ${label === "Toko" ? "bg-[#c2dc80]/50" : ""}`}>{icon && <Icon file={icon} />}</span>
-            <span className={`pt-[2px] ${label === "Review Pasar" ? "text-[10px] leading-[15px] text-[#94a3b8] inter-regular" : label === "Toko" ? "text-[9.5px] leading-[14.25px] text-[#4b6515] inter-bold" : "text-[9.5px] leading-[14.25px] inter-regular"}`}>{label}</span>
-          </a>
+          <button key={label} type="button" onClick={() => navigate(href)} aria-current={label === "Toko" ? "page" : undefined} className={`flex min-w-[38px] flex-col items-center border-0 bg-transparent p-0 ${label === "Toko" ? "text-[#4b6515]" : "text-[#9ca3af]"}`}>
+            <span className={`flex size-8 items-center justify-center rounded-full ${label === "Toko" ? "bg-[#c2dc80]/50" : ""}`}><Icon file={icon} className={`h-5 w-5 max-h-[23px] ${label === "Toko" ? "[filter:brightness(0)_saturate(100%)_invert(30%)_sepia(26%)_saturate(1180%)_hue-rotate(37deg)_brightness(91%)_contrast(90%)]" : ""}`} /></span>
+            <span className={`pt-[2px] text-[9.5px] leading-[14px] ${label === "Toko" ? "font-bold" : "font-normal"} ${label === "Review Pasar" ? "text-[9px]" : ""}`}>{label}</span>
+          </button>
         ))}
       </nav>
 

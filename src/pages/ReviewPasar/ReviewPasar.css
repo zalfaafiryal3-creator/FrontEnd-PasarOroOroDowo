@@ -646,7 +646,11 @@ button {
 
 .bottom-nav.review-page button b {
   color: #9ca3af;
-  font: 600 9.5px/14.25px "Inter:Bold", sans-serif;
+  font: 400 9.5px/14px "Inter:Regular", sans-serif;
+}
+
+.bottom-nav.review-page .review-tab b {
+  font-size: 9px;
 }
 
 .bottom-nav.review-page .review-tab.active > span {

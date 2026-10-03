@@ -1,0 +1,96 @@
+.denah-page {
+  min-height: 100dvh;
+  width: min(100%, 402px);
+  margin: 0 auto;
+  overflow-x: clip;
+  background: rgb(194 220 128 / 25%);
+  color: #594045;
+  box-shadow: 0 18px 32px rgb(89 64 69 / 18%);
+}
+
+.denah-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  min-height: 64px;
+  grid-template-columns: 36px minmax(0, 1fr) 36px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgb(89 64 69 / 20%);
+  background: rgb(194 220 128 / 25%);
+  backdrop-filter: blur(8px);
+}
+
+.denah-back-button {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #594045;
+  box-shadow: 0 2px 6px rgb(89 64 69 / 14%);
+}
+
+.denah-back-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.denah-header-copy {
+  min-width: 0;
+  text-align: center;
+}
+
+.denah-header-copy h1 {
+  overflow: hidden;
+  margin: 0;
+  color: #594045;
+  font: 700 15px/21px "Inter:Bold", Inter, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.denah-header-copy p {
+  margin: 0;
+  color: #4b6515;
+  font: 400 10px/14px "Inter:Regular", Inter, sans-serif;
+}
+
+.denah-content {
+  padding: 16px 12px 24px;
+}
+
+.denah-card {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid #594045;
+  border-radius: 22px;
+  background: transparent;
+  box-shadow: 0 7px 16px rgb(89 64 69 / 34%);
+}
+
+.denah-card img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+.denah-page button:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 3px;
+}
+
+@media (max-width: 360px) {
+  .denah-content {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}

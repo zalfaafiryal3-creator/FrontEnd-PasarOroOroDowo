@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   UtensilsCrossed,
   Leaf,
@@ -145,15 +145,13 @@ const storesData: StoreItem[] = [
 
 export default function Toko() {
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategory = searchParams.get('category');
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleCategoryClick = (categoryName: string) => {
-    if (activeCategory === categoryName) {
-      setActiveCategory(null);
-    } else {
-      setActiveCategory(categoryName);
-    }
+    const nextCategory = activeCategory === categoryName ? null : categoryName;
+    setSearchParams(nextCategory ? { category: nextCategory } : {});
   };
 
   const filteredStores = storesData.filter((store) => {

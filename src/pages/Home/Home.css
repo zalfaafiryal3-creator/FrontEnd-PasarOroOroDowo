@@ -131,7 +131,7 @@ button:active { transform: translateY(1px); }
 .app-shell .mobile-page {
 	background: #f0f6df;
 	border-inline-color: rgba(75, 101, 21, 0.2);
-	box-shadow: 0 18px 32px rgba(89, 64, 69, 0.12);
+	box-shadow: 0 18px 32px rgba(89, 64, 69, 0.18);
 }
 
 .app-shell .top-header {
@@ -170,6 +170,7 @@ button:active { transform: translateY(1px); }
 
 .app-shell .hero {
 	background: linear-gradient(115deg, var(--home-green) 0%, rgba(194, 220, 128, 0.82) 55%, var(--home-yellow) 100%);
+	box-shadow: 0 5px 8px rgba(89, 64, 69, 0.32);
 }
 
 .app-shell .hero-glow-left {
@@ -183,7 +184,7 @@ button:active { transform: translateY(1px); }
 .app-shell .hero-copy button,
 .app-shell .visit-copy button {
 	color: var(--home-brown);
-	box-shadow: 0 3px 6px rgba(75, 101, 21, 0.22);
+	box-shadow: 0 3px 6px rgba(89, 64, 69, 0.3);
 }
 
 .app-shell .hero-copy button {
@@ -208,7 +209,18 @@ button:active { transform: translateY(1px); }
 .app-shell .market-card,
 .app-shell .feature-grid,
 .app-shell .store-card {
-	border-color: rgba(75, 101, 21, 0.28);
+	border-color: rgba(89, 64, 69, 0.72);
+	box-shadow: 0 5px 10px rgba(89, 64, 69, 0.38);
+}
+
+.app-shell .category-card.pink,
+.app-shell .category-card.green,
+.app-shell .category-card.plain {
+	border-color: rgba(89, 64, 69, 0.72);
+}
+
+.app-shell .market-card {
+	box-shadow: 0 6px 12px rgba(89, 64, 69, 0.42);
 }
 
 .app-shell .market-photo,
@@ -260,7 +272,7 @@ button:active { transform: translateY(1px); }
 }
 
 .app-shell .feature-icon.pink {
-	background: rgba(251, 191, 36, 0.24);
+	background: rgba(251, 191, 36, 0.48);
 }
 
 .app-shell .feature-icon.green {
@@ -288,11 +300,11 @@ button:active { transform: translateY(1px); }
 }
 
 .app-shell .category-card.green {
-	border-color: rgba(194, 220, 128, 0.82);
+	border-color: rgba(89, 64, 69, 0.34);
 }
 
 .app-shell .category-card.pink > span {
-	background: rgba(251, 191, 36, 0.24);
+	background: rgba(251, 191, 36, 0.48);
 }
 
 .app-shell .category-card.green > span {
@@ -300,7 +312,7 @@ button:active { transform: translateY(1px); }
 }
 
 .app-shell .category-card.plain > span {
-	background: rgba(194, 220, 128, 0.2);
+	background: rgba(251, 191, 36, 0.48);
 }
 
 .app-shell .store-photo > span {
@@ -314,13 +326,18 @@ button:active { transform: translateY(1px); }
 .app-shell .store-button {
 	background: var(--home-yellow);
 	color: var(--home-brown);
-	box-shadow: 0 3px 5px rgba(194, 220, 128, 0.8);
+	box-shadow: 0 3px 5px rgba(89, 64, 69, 0.3);
+}
+
+.app-shell .hero-bag,
+.app-shell .visit-art {
+	filter: drop-shadow(0 5px 2px rgba(89, 64, 69, 0.2));
 }
 
 .app-shell .visit-card {
 	border-color: rgba(194, 220, 128, 0.9);
 	background: linear-gradient(110deg, rgba(194, 220, 128, 0.24), rgba(255, 255, 255, 0.94));
-	box-shadow: 0 5px 12px rgba(89, 64, 69, 0.12);
+	box-shadow: 0 6px 14px rgba(89, 64, 69, 0.3);
 }
 
 .app-shell .visit-title > span {
@@ -333,12 +350,12 @@ button:active { transform: translateY(1px); }
 
 .app-shell .visit-copy button {
 	border-color: rgba(194, 220, 128, 0.9);
-	box-shadow: 0 3px 3px rgba(75, 101, 21, 0.38);
+	box-shadow: 0 3px 3px rgba(89, 64, 69, 0.3);
 }
 
 .app-shell .bottom-nav {
 	border-color: rgba(194, 220, 128, 0.78);
-	box-shadow: 0 -4px 22px rgba(75, 101, 21, 0.1);
+	box-shadow: 0 -4px 22px rgba(89, 64, 69, 0.14);
 }
 
 .app-shell .bottom-nav button.active > span {
