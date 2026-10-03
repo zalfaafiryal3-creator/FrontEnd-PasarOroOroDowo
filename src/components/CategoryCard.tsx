@@ -1,4 +1,4 @@
-import type { Category } from '../types/Category';
+import type { Category } from '../../../backend/src/models/Category';
 
 type CategoryCardProps = {
   category: Category;

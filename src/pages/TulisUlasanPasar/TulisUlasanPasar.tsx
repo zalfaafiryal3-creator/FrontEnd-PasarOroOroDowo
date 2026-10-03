@@ -1,4 +1,4 @@
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
@@ -17,9 +17,8 @@ import {
 import {
   addReview,
   getReviews,
-  subscribeToReviews,
   type CategoryRatings,
-} from "../../services/reviewStore";
+} from "../../../../backend/src/clients/reviewApi";
 
 import "./TulisUlasanPasar.css";
 
@@ -63,7 +62,8 @@ const ratingLabels: Record<number, string> = {
 
 export default function TulisUlasanPasar() {
   const navigate = useNavigate();
-  const reviewCount = useSyncExternalStore(subscribeToReviews, getReviews, getReviews).length;
+  const [reviewCount, setReviewCount] = useState(0);
+  const [submitError, setSubmitError] = useState("");
 
   const [rating, setRating] = useState(5);
   const [selectedAspect, setSelectedAspect] = useState("Semua");
@@ -77,6 +77,22 @@ export default function TulisUlasanPasar() {
   const [experience, setExperience] = useState("");
   const [umkm, setUmkm] = useState(true);
   const [photos, setPhotos] = useState<string[]>([]);
+
+  useEffect(() => {
+    let active = true;
+    getReviews()
+      .then((loadedReviews) => {
+        if (active) setReviewCount(loadedReviews.length);
+      })
+      .catch((error: unknown) => {
+        if (active) {
+          setSubmitError(error instanceof Error ? error.message : "Gagal memuat ulasan.");
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const handlePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -119,25 +135,28 @@ export default function TulisUlasanPasar() {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const tags = [
       aspectRatings["Kebersihan & Kerapian"] >= 4 ? "Kebersihan: Luar Biasa" : null,
       aspectRatings["Keamanan & Parkir"] >= 4 ? "Parkir: Tertata" : null,
     ].filter((tag): tag is string => tag !== null);
 
-    addReview({
-      name: name.trim() || "Anonim",
-      status: umkm ? "Pengunjung Setia" : "Pengunjung",
-      rating,
-      date: "Baru saja",
-      tags,
-      text: experience.trim() || "Pengunjung belum menambahkan cerita.",
-      photos,
-      helpful: 0,
-      categories: aspectRatings,
-    });
-
-    navigate("/review-pasar");
+    try {
+      await addReview({
+        name: name.trim() || "Anonim",
+        status: umkm ? "Pengunjung Setia" : "Pengunjung",
+        rating,
+        date: "Baru saja",
+        tags,
+        text: experience.trim() || "Pengunjung belum menambahkan cerita.",
+        photos,
+        helpful: 0,
+        categories: aspectRatings,
+      });
+      navigate("/review-pasar");
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Gagal mengirim ulasan.");
+    }
   };
 
   return (
@@ -147,10 +166,10 @@ export default function TulisUlasanPasar() {
         {/* HEADER */}
         <header className="review-header">
           <button
-            className="back-button"
+            className="back-button market-review-back-button"
             onClick={() => navigate(-1)}
           >
-            <ArrowLeft size={15} />
+            <ArrowLeft size={20} />
           </button>
 
           <div className="header-title">
@@ -265,20 +284,10 @@ export default function TulisUlasanPasar() {
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                placeholder="Masukkan nama"
               />
               <Check size={12} className="valid-icon" />
             </div>
-
-            <label className="checkbox-row">
-              <input
-                type="checkbox"
-                checked={umkm}
-                onChange={() => setUmkm((value) => !value)}
-              />
-
-              <span>Tampilkan badge</span>
-            </label>
-
           </section>
 
           {/* EXPERIENCE */}
@@ -300,6 +309,7 @@ export default function TulisUlasanPasar() {
               onChange={(e) =>
                 setExperience(e.target.value)
               }
+              placeholder="Bagikan pengalaman kamu tentang pasar ini..."
             />
 
             <div className="experience-footer">
@@ -401,13 +411,14 @@ export default function TulisUlasanPasar() {
             Kirim Ulasan Pasar
             <ArrowRightSmall />
           </button>
+          {submitError && <p role="alert">{submitError}</p>}
 
         </main>
 
         {/* BOTTOM NAV */}
         <nav className="bottom-nav review-page" aria-label="Navigasi utama">
           <button type="button" onClick={() => navigate('/home')}>
-            <span><img src="/assets/dfd0c.svg" alt="" /></span>
+            <span><img className="review-nav-home-icon" src="/assets/d27ed.svg" alt="" /></span>
             <b>Home</b>
           </button>
           <button type="button" onClick={() => navigate('/toko')}>
@@ -415,7 +426,7 @@ export default function TulisUlasanPasar() {
             <b>Toko</b>
           </button>
           <button type="button" onClick={() => navigate('/promo')}>
-            <span><img src="/assets/75326.svg" alt="" /></span>
+            <span><img className="market-promo-icon" src="/assets/75326.svg" alt="" /></span>
             <b>Promo</b>
           </button>
           <button type="button" className="active review-tab" onClick={() => navigate('/review-pasar')}>

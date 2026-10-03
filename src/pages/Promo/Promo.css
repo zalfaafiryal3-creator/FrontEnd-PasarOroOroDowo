@@ -651,7 +651,8 @@
 .promo-bottom-nav button > span img {
 	width: 20px;
 	max-height: 23px;
-	filter: grayscale(1) opacity(0.7);
+	filter: grayscale(1) brightness(0.72) contrast(0.8);
+	opacity: 0.9;
 }
 
 .promo-bottom-nav button b {
@@ -661,12 +662,12 @@
 }
 
 .promo-bottom-nav button.active {
-	color: #9ca3af;
+	color: #4f6818;
 }
 
 .promo-bottom-nav button.active > span {
 	border-radius: 50%;
-	background: rgba(194, 220, 128, 0.45);
+	background: #e2f0c2;
 }
 
 .promo-bottom-nav button.active > span img {
@@ -674,7 +675,7 @@
 }
 
 .promo-bottom-nav button.active b {
-	color: #4b6515;
+	color: #4f6818;
 	font-family: "Inter:Bold", sans-serif;
 	font-weight: 700;
 }

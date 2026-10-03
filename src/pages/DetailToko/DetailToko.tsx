@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { addStoreReview, getStoreReviews, type StoreReview } from "../../services/storeReviewService";
 
 const asset = (name: string) => `/assets/${name}`;
 
@@ -12,19 +13,6 @@ const products = [
 ];
 
 const gallery = ["b55ea.png", "4ef0e.png", "86d1c.png"];
-
-const initialReviews = [
-  {
-    name: "Ibu Maya Lestari",
-    date: "2 hari lalu • Pembeli Terverifikasi",
-    text: "“Bahan katun adem banget, jahitan rapi! Pengiriman lewat kurir pasar cepat sampai dalam 25 menit. Bu Serli juga ramah sekali pas ditanya ukuran via chat.”",
-  },
-  {
-    name: "Dimas Priyambodo",
-    date: "1 minggu lalu • Pembeli Terverifikasi",
-    text: "“Kemeja linen santai kualitasnya jempolan, warna sesuai foto etalase. Pilihan belanja terpercaya di Pasar Oro-Oro Dowo.”",
-  },
-];
 
 function Icon({ file, className = "" }: { file: string; className?: string }) {
   return <img src={asset(file)} alt="" aria-hidden="true" className={`shrink-0 ${className}`} />;
@@ -46,10 +34,27 @@ export default function App() {
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [reviewOpen, setReviewOpen] = useState(false);
   const [allReviewsOpen, setAllReviewsOpen] = useState(false);
-  const [reviews, setReviews] = useState(initialReviews);
+  const [reviews, setReviews] = useState<StoreReview[]>(getStoreReviews);
   const [reviewName, setReviewName] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<(typeof products)[number] | null>(null);
+
+  useEffect(() => {
+    const handleRefresh = () => {
+      setReviews(getStoreReviews());
+    };
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        setReviews(getStoreReviews());
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('popstate', handleRefresh);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('popstate', handleRefresh);
+    };
+  }, []);
 
   const openGallery = (index: number) => {
     setGalleryIndex(index);
@@ -61,7 +66,7 @@ export default function App() {
       <div className="relative mx-auto min-h-dvh w-full max-w-[402px] overflow-x-clip border-x border-[#ea9caf]/20 bg-[#f0f6df] pb-4 text-[#111c2d] shadow-[0_25px_25px_rgba(0,0,0,0.25)] pj-regular">
       <header id="home" className="h-16 w-full backdrop-blur-xl">
         <div className="mx-auto flex h-full max-w-[1100px] items-center px-4">
-          <button className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm" aria-label="Kembali ke Home" onClick={() => navigate('/home')}>
+          <button className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm" aria-label="Kembali ke Toko" onClick={() => navigate('/toko')}>
             <Icon file="ab505.svg" />
           </button>
           <div className="min-w-0 flex-1 text-center leading-none">
@@ -97,7 +102,7 @@ export default function App() {
             </div>
             <div className="grid grid-cols-3 gap-2 rounded-xl border border-[#ea9caf]/20 bg-[#c2dc80]/80 px-[9px] pb-[9px] pt-[13px] text-center">
               {[
-                ["2bd96.svg", "4.9", "180+ Ulasan"],
+                ["2bd96.svg", "4.9", `${reviews.length} Ulasan`],
                 ["3245c.svg", "06.00", "Tutup 17.00"],
                 ["d1110.svg", "100%", "Produk Asli"],
               ].map(([icon, value, label]) => (
@@ -170,12 +175,12 @@ export default function App() {
         <section id="ulasan" className="-mx-3 mt-[13px] rounded-2xl border border-[#e0bec4]/30 bg-white p-[17px] shadow-sm scroll-mt-20">
           <div className="flex items-start justify-between gap-2">
             <h2 className="flex items-start gap-2 text-[18px] leading-6 pj-bold"><Icon file="3032a.svg" className="mt-[3px]" /><span>Ulasan Toko &amp;<br />Pembeli</span></h2>
-            <button onClick={() => setReviewOpen(true)} className="flex items-center gap-1 rounded-full bg-[#fbbf24] px-3 py-1 text-[10px] leading-[14px] tracking-[0.4px] text-white shadow-sm pj-bold"><Icon file="34021.svg" /><span className="px-[15px]">+ Tulis<br />Ulasan</span></button>
+            <button onClick={() => navigate('/tulis-ulasan-toko')} className="flex items-center gap-1 rounded-full bg-[#fbbf24] px-3 py-1 text-[10px] leading-[14px] tracking-[0.4px] text-white shadow-sm pj-bold"><Icon file="34021.svg" /><span className="px-[15px]">+ Tulis<br />Ulasan</span></button>
           </div>
           <div className="mt-2 flex items-center justify-between gap-2 rounded-xl bg-[#fbbf24]/25 p-2">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1 rounded-lg bg-white px-2 py-1 shadow-sm"><Icon file="b39e0.svg" /><span className="text-[18px] leading-6 pj-bold">4.9</span><span className="text-[10px] leading-[14px] text-[#594045] pj-bold">/ 5.0</span></div>
-              <div><p className="text-[12px] leading-4 tracking-[0.24px] pj-bold">180+ Ulasan<br />Pembeli</p><p className="text-[11px] font-medium leading-[16.5px] text-[#485c13]">98% Pembeli Puas</p></div>
+              <div><p className="text-[12px] leading-4 tracking-[0.24px] pj-bold">{reviews.length} Ulasan<br />Pembeli</p><p className="text-[11px] font-medium leading-[16.5px] text-[#485c13]">98% Pembeli Puas</p></div>
             </div>
             <Stars />
           </div>
@@ -190,7 +195,7 @@ export default function App() {
               </article>
             ))}
           </div>
-          <button onClick={() => setAllReviewsOpen(!allReviewsOpen)} className="mt-2 flex w-full items-center justify-center gap-1 rounded-xl pb-2 pt-[10px] text-[12px] leading-4 tracking-[0.24px] text-[#fbbf24] pj-bold">{allReviewsOpen ? "Tampilkan Lebih Sedikit" : "Lihat Semua 180+ Ulasan Toko"}<Icon file="52f31.svg" /></button>
+          <button onClick={() => setAllReviewsOpen(!allReviewsOpen)} className="mt-2 flex w-full items-center justify-center gap-1 rounded-xl pb-2 pt-[10px] text-[12px] leading-4 tracking-[0.24px] text-[#fbbf24] pj-bold">{allReviewsOpen ? "Tampilkan Lebih Sedikit" : `Lihat Semua ${reviews.length} Ulasan Toko`}<Icon file="52f31.svg" /></button>
         </section>
       </main>
 
@@ -223,7 +228,7 @@ export default function App() {
       </div>}
 
       {reviewOpen && <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 p-5" role="dialog" aria-modal="true" aria-label="Tulis Ulasan" onClick={() => setReviewOpen(false)}>
-        <form className="w-full max-w-sm space-y-4 rounded-2xl bg-white p-5" onClick={(e) => e.stopPropagation()} onSubmit={(e) => { e.preventDefault(); if (reviewName.trim() && reviewText.trim()) { setReviews([{ name: reviewName.trim(), date: "Baru saja • Pembeli", text: reviewText.trim() }, ...reviews]); setAllReviewsOpen(true); setReviewOpen(false); setReviewName(""); setReviewText(""); document.getElementById("ulasan")?.scrollIntoView({ behavior: "smooth" }); } }}>
+        <form className="w-full max-w-sm space-y-4 rounded-2xl bg-white p-5" onClick={(e) => e.stopPropagation()} onSubmit={(e) => { e.preventDefault(); if (reviewName.trim() && reviewText.trim()) { setReviews(addStoreReview({ name: reviewName.trim(), date: "Baru saja • Pembeli", text: reviewText.trim(), rating: 5 })); setAllReviewsOpen(true); setReviewOpen(false); setReviewName(""); setReviewText(""); document.getElementById("ulasan")?.scrollIntoView({ behavior: "smooth" }); } }}>
           <div className="flex items-center justify-between"><h2 className="text-lg pj-bold">Tulis Ulasan</h2><button type="button" aria-label="Tutup" onClick={() => setReviewOpen(false)}>×</button></div>
           <label className="block text-sm">Nama<input required value={reviewName} onChange={(e) => setReviewName(e.target.value)} className="mt-1 w-full rounded-lg border border-[#c2dc80] p-2 outline-[#fbbf24]" /></label>
           <label className="block text-sm">Ulasan<textarea required value={reviewText} onChange={(e) => setReviewText(e.target.value)} rows={4} className="mt-1 w-full rounded-lg border border-[#c2dc80] p-2 outline-[#fbbf24]" /></label>

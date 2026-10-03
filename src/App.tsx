@@ -12,6 +12,7 @@ import Toko from './pages/Toko/Toko';
 import DetailToko from './pages/DetailToko/DetailToko';
 import ReviewPasar from './pages/ReviewPasar/ReviewPasar';
 import TulisUlasanPasar from './pages/TulisUlasanPasar/TulisUlasanPasar';
+import TulisUlasanToko from './pages/TulisUlasanToko/TulisUlasanToko';
 
 const splashLogo = '/assets/logo%20oro%20hijau.png';
 
@@ -51,6 +52,7 @@ export default function App() {
         <Route path="/rekomendasi" element={<Rekomendasi />} />
         <Route path="/review-pasar" element={<ReviewPasar />} />
         <Route path="/tulis-ulasan-pasar" element={<TulisUlasanPasar />} />
+        <Route path="/tulis-ulasan-toko" element={<TulisUlasanToko />} />
       </Routes>
     </BrowserRouter>
   );

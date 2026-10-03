@@ -26,7 +26,7 @@
   height: 52px;
   align-items: center;
   padding: 0 12px;
-  border-bottom: 1px solid #eadfe4;
+  border-bottom: 1px solid #dfe9ce;
   background: #f0f6df;
 }
 
@@ -39,9 +39,21 @@
   border: 0;
   border-radius: 50%;
   background: #fff;
-  color: #555;
+  color: #456a3e;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   cursor: pointer;
+}
+
+.market-review-back-button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.market-review-back-button > svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
 }
 
 .header-title {
@@ -79,7 +91,7 @@
   padding: 12px;
   border-radius: 16px;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.035);
+  box-shadow: 0 1px 4px rgba(76, 112, 61, 0.08);
 }
 
 .review-form-page .market-card {
@@ -108,9 +120,10 @@
   display: inline-block;
   margin-bottom: 5px;
   padding: 4px 8px;
+  border: 1px solid #f59e0b;
   border-radius: 999px;
-  background: #fbe9ef;
-  color: #d65f82;
+  background: #ffda79;
+  color: #594045;
   font-size: 10px;
   font-weight: 600;
 }
@@ -129,7 +142,7 @@
 }
 
 .market-rating span:first-child {
-  color: #f5ad24;
+  color: #f2ae27;
   font-size: 14px;
 }
 
@@ -138,7 +151,7 @@
 }
 
 .market-rating small {
-  color: #777;
+  color: #6b7567;
   font-size: 12px;
 }
 
@@ -149,7 +162,7 @@
   border-radius: 16px;
   background: #fff;
   text-align: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.025);
+  box-shadow: 0 1px 4px rgba(76, 112, 61, 0.07);
 }
 
 .rating-card h3 {
@@ -160,7 +173,7 @@
 
 .rating-card > p {
   margin: 5px 0 15px;
-  color: #7b879c;
+  color: #71806b;
   font-size: 13px;
 }
 
@@ -174,7 +187,7 @@
   padding: 0;
   border: 0;
   background: none;
-  color: #dedede;
+  color: #d9dfd1;
   cursor: pointer;
 }
 
@@ -184,7 +197,7 @@
 }
 
 .stars button.active {
-  color: #ffb21c;
+  color: #f6b833;
 }
 
 .review-form-page .rating-description {
@@ -197,8 +210,8 @@
   margin-top: 18px;
   padding: 7px 10px;
   border-radius: 999px;
-  background: #fcebf0;
-  color: #d96988;
+  background: #edf5df;
+  color: #456a3e;
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
@@ -215,7 +228,7 @@
   padding: 9px;
   border-radius: 9px;
   background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.025);
+  box-shadow: 0 1px 4px rgba(76, 112, 61, 0.07);
 }
 
 .aspect-card {
@@ -244,10 +257,10 @@
 
 .pink-outline {
   padding: 7px 12px;
-  border: 1px solid #efadc0;
+  border: 1px solid #d3e2b8;
   border-radius: 999px;
   background: #fff;
-  color: #df6b8b;
+  color: #456a3e;
   font-size: 12px;
 }
 
@@ -262,23 +275,23 @@
   min-height: 52px;
   align-items: center;
   padding: 8px 10px;
-  border: 1px solid #d4dfa8;
+  border: 1px solid #d3e2b8;
   border-radius: 14px;
   cursor: pointer;
 }
 
 .aspect-item.green {
-  border-color: #b9cd81;
+  border-color: #c6d99b;
   background: #eef7dc;
 }
 
 .aspect-item.pink {
-  border-color: #e7aab8;
-  background: #fff1f2;
+  border-color: #f0d28d;
+  background: #fff5dc;
 }
 
 .aspect-item.selected {
-  box-shadow: inset 0 0 0 1px #db6687;
+  box-shadow: inset 0 0 0 1px #75984f;
 }
 
 .aspect-icon {
@@ -289,7 +302,7 @@
 
 .aspect-name {
   flex: 1;
-  color: #555;
+  color: #456a3e;
   font-size: 14px;
   text-align: left;
 }
@@ -322,14 +335,14 @@
   align-items: center;
   gap: 8px;
   padding: 0 12px;
-  border: 1px solid #dedede;
+  border: 1px solid #d3e2c0;
   border-radius: 14px;
 }
 
 .input-wrapper svg {
   width: 16px;
   height: 16px;
-  color: #d86788;
+  color: #527947;
 }
 
 .input-wrapper input {
@@ -341,31 +354,21 @@
   font-size: 14px;
 }
 
+.input-wrapper input::placeholder,
+.experience-card textarea::placeholder {
+  color: #a0a6ad;
+  opacity: 1;
+}
+
 .valid-icon {
-  color: #e45c81 !important;
-}
-
-.checkbox-row {
-  display: flex !important;
-  align-items: center;
-  gap: 8px;
-  margin-top: 12px !important;
-  margin-bottom: 0 !important;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-}
-
-.checkbox-row input {
-  width: 22px;
-  height: 22px;
-  accent-color: #df6686;
+  color: #71984c !important;
 }
 
 .badge-small {
   padding: 5px 9px;
   border-radius: 999px;
-  background: #fbe8ed;
-  color: #d76785;
+  background: #edf5df;
+  color: #527947;
   font-size: 11px;
 }
 
@@ -375,7 +378,7 @@
 }
 
 .experience-heading span {
-  color: #9aa6b8;
+  color: #87927e;
   font-size: 12px;
 }
 
@@ -384,10 +387,10 @@
   height: 110px;
   padding: 12px;
   resize: none;
-  border: 1px solid #ecaec0;
+  border: 1px solid #d3e2c0;
   border-radius: 14px;
   outline: 0;
-  background: #fff8fa;
+  background: #fbfdf7;
   color: #555;
   font-family: inherit;
   font-size: 14px;
@@ -398,12 +401,12 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  color: #9aa6b8;
+  color: #87927e;
   font-size: 12px;
 }
 
 .experience-footer span:first-child {
-  color: #9aaeaf;
+  color: #71984c;
 }
 
 .photos-heading {
@@ -422,7 +425,7 @@
 }
 
 .photos-heading small {
-  color: #d76786;
+  color: #668847;
   font-size: 12px;
 }
 
@@ -445,9 +448,9 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  border: 1px dashed #ed9fb7;
-  background: #fff9fa;
-  color: #dc7894;
+  border: 1px dashed #bcd397;
+  background: #f8fbf1;
+  color: #668847;
   cursor: pointer;
 }
 
@@ -486,7 +489,7 @@
   border: 0;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.85);
-  color: #d96686;
+  color: #527947;
 }
 
 .photo-label {
@@ -507,7 +510,7 @@
   gap: 12px;
   margin-bottom: 10px;
   padding: 18px;
-  border: 1px solid #a8bc70;
+  border: 1px solid #bfd392;
   border-radius: 16px;
   background: #e9f3cf;
 }
@@ -521,7 +524,7 @@
   justify-content: center;
   border-radius: 50%;
   background: #fff;
-  color: #95aa56;
+  color: #668847;
 }
 
 .umkm-text {
@@ -531,13 +534,13 @@
 .umkm-text strong {
   display: block;
   margin-bottom: 6px;
-  color: #506226;
+  color: #456a3e;
   font-size: 14px;
 }
 
 .umkm-text p {
   margin: 0;
-  color: #68764a;
+  color: #5f7450;
   font-size: 13px;
   line-height: 1.55;
 }
@@ -591,16 +594,16 @@
   gap: 4px;
   border: 0;
   border-radius: 10px;
-  background: #d95f81;
+  background: #f6b833;
   color: #fff;
   font-size: 12px;
   font-weight: 700;
-  box-shadow: 0 3px 7px rgba(210, 88, 120, 0.25);
+  box-shadow: 0 3px 7px rgba(212, 158, 38, 0.24);
   cursor: pointer;
 }
 
 .submit-button:hover {
-  background: #ce5476;
+  background: #edae24;
 }
 
 .privacy-text {
@@ -621,10 +624,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 11px 25px;
-  border: 1px solid rgba(234, 156, 175, 0.3);
+  border: 1px solid rgba(194, 220, 128, 0.8);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 -4px 25px rgba(213, 105, 137, 0.08);
+  box-shadow: 0 -4px 25px rgba(75, 101, 21, 0.08);
   backdrop-filter: blur(6px);
 }
 
@@ -653,6 +656,18 @@
   max-height: 23px;
 }
 
+.review-form-page .bottom-nav .review-nav-home-icon {
+  width: 20px;
+  height: 20px;
+  max-height: none;
+}
+
+.review-form-page .bottom-nav .market-promo-icon {
+  width: 20px;
+  height: 20px;
+  max-height: none;
+}
+
 .review-form-page .bottom-nav button b {
   margin-top: 2px;
   white-space: nowrap;
@@ -663,12 +678,12 @@
 .review-form-page .bottom-nav button.active > span,
 .review-form-page .bottom-nav .review-tab.active > span {
   border-radius: 50%;
-  background: rgba(234, 156, 175, 0.25);
+  background: #e2f0c2;
 }
 
 .review-form-page .bottom-nav button.active b,
 .review-form-page .bottom-nav .review-tab.active {
-  color: #d56989;
+  color: #4f6818;
 }
 
 .review-form-page .bottom-nav button.active b {
@@ -689,7 +704,28 @@
   display: block;
   width: 20px;
   height: 20px;
-  color: #d56989;
+  color: #4f6818;
+}
+
+.review-form-page .store-review-name-card,
+.review-form-page .store-review-experience-card {
+  margin-bottom: 14px;
+  border: 1px solid #d3e2c0;
+  box-shadow: 0 1px 4px rgba(76, 112, 61, 0.07);
+}
+
+.review-form-page .store-review-name-card .input-wrapper {
+  background: #fbfdf7;
+}
+
+.review-form-page .store-review-name-card .input-wrapper > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.review-form-page .store-review-name-card .input-wrapper .valid-icon {
+  margin-left: auto;
 }
 
 @media (min-width: 600px) {

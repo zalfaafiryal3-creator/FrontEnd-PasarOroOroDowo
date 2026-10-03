@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowLeft, Sparkles } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { storeDetailsMap } from '../../services/storeDetails';
-import type { ProductItem, StoreDetail } from '../../services/storeDetails';
+import {
+  getStoreDetails,
+  type ProductItem,
+  type StoreDetail,
+} from '../../../../backend/src/clients/storeDetailsApi';
 import './ChatbotRekomendasi.css';
 
 type Duration = '30 Menit' | '1 Jam' | '2 Jam +';
@@ -49,8 +52,13 @@ function getTasteKeywords(taste: Taste): string {
   return taste.toLowerCase();
 }
 
-function createRoutePlan(duration: Duration, taste: Taste, budget: number): RoutePlan {
-  const candidates = Object.values(storeDetailsMap)
+function createRoutePlan(
+  storeDetails: Record<string, StoreDetail>,
+  duration: Duration,
+  taste: Taste,
+  budget: number,
+): RoutePlan {
+  const candidates = Object.values(storeDetails)
     .filter((store) => store.category === 'Makanan' || store.category === 'Kuliner Legendaris')
     .flatMap((store) => store.products.map((product) => ({ store, product, price: parsePrice(product.price) })))
     .filter(({ product, price }) => price > 0 && tasteKeywords[taste].test(`${product.name} ${product.desc}`))
@@ -81,7 +89,28 @@ export default function ChatbotRekomendasi() {
   const [duration, setDuration] = useState<Duration>('1 Jam');
   const [taste, setTaste] = useState<Taste>('Pedas');
   const [budget, setBudget] = useState(100_000);
-  const [routePlan, setRoutePlan] = useState(() => createRoutePlan('1 Jam', 'Pedas', 100_000));
+  const [storeDetails, setStoreDetails] = useState<Record<string, StoreDetail>>({});
+  const [storeDetailsError, setStoreDetailsError] = useState('');
+  const [routePlan, setRoutePlan] = useState(() => createRoutePlan({}, '1 Jam', 'Pedas', 100_000));
+
+  useEffect(() => {
+    let active = true;
+    getStoreDetails()
+      .then((details) => {
+        if (active) {
+          setStoreDetails(details);
+          setRoutePlan(createRoutePlan(details, '1 Jam', 'Pedas', 100_000));
+        }
+      })
+      .catch((error: unknown) => {
+        if (active) {
+          setStoreDetailsError(error instanceof Error ? error.message : 'Gagal memuat data toko.');
+        }
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const handleBack = () => {
     if (location.key === 'default') {
@@ -91,7 +120,7 @@ export default function ChatbotRekomendasi() {
     navigate(-1);
   };
 
-  const generateRoute = () => setRoutePlan(createRoutePlan(duration, taste, budget));
+  const generateRoute = () => setRoutePlan(createRoutePlan(storeDetails, duration, taste, budget));
 
   return (
     <main className="chatbot-page">
@@ -168,6 +197,7 @@ export default function ChatbotRekomendasi() {
           <Sparkles aria-hidden="true" />
           Buat Rekomendasi
         </button>
+        {storeDetailsError && <p role="alert">{storeDetailsError}</p>}
 
         <section className="chatbot-result" aria-live="polite" aria-labelledby="chatbot-result-title">
           <div className="chatbot-result-badge"><img src="/assets/robot.png" alt="" />HASIL AI</div>
